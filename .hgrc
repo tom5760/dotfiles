@@ -1,0 +1,8 @@
+[ui]
+username = Tom Wambold <tom5760@gmail.com>
+
+[trusted]
+groups = acin
+
+[web]
+cacerts = /etc/ssl/certs/ca-certificates.crt

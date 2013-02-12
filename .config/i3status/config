@@ -1,0 +1,22 @@
+general {
+    colors = true
+    interval = 5
+}
+
+order += "battery 0"
+order += "volume Master"
+order += "time"
+
+battery 0 {
+    format = "Bat: %percentage (%status)"
+    low_threshold = 10
+    last_full_capacity = true
+}
+
+volume Master {
+    format = "Vol: %volume"
+}
+
+time {
+    format = "%a %b %-e, %Y %-l:%M%p"
+}

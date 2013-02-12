@@ -1,0 +1,15 @@
+general {
+    colors = true
+    interval = 5
+}
+
+order += "volume Master"
+order += "time"
+
+volume Master {
+    format = "Vol: %volume"
+}
+
+time {
+    format = "%a %b %-e, %Y %-l:%M%p"
+}

@@ -1,0 +1,32 @@
+# Config file for GNU Screen
+
+# Turns off the startup copyright message
+startup_message off
+
+# Defines a bigger scrollback. (Default 100)
+defscrollback 25000
+
+# Visual bell is really annoying
+vbell off
+
+# Nice status bar
+hardstatus off
+caption always "%{=b}%?%F%:%45=%n*%f %t%?%?%F%{r}%:%{s kk}%?%H%?%F%{-}%? %L=%-Lw%45L>%?%F%{g}%?%n*%f %t%?%F%{-}%?%+Lw%-17= %?%F%{y}%?%c %d.%m.%Y%?"
+
+# Stops CTRL+A S from freezing screen
+bind s
+
+# select an open window direct with ALT+ 0-9
+bindkey "^[1" select 0
+bindkey "^[2" select 1
+bindkey "^[3" select 2
+bindkey "^[4" select 3
+bindkey "^[5" select 4
+bindkey "^[6" select 5
+bindkey "^[7" select 6
+bindkey "^[8" select 7
+bindkey "^[9" select 8
+bindkey "^[0" select 9 
+
+# Fixes odd problem with hitting another key after escape too quickly in vim
+maptimeout 2

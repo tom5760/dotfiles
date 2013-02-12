@@ -1,0 +1,15 @@
+[user]
+	name = Tom Wambold
+	email = tom5760@gmail.com
+[core]
+	editor = vim
+	pager = less
+[merge]
+	tool = vimdiff
+[color]
+	ui = auto
+	diff = auto
+	status = auto
+	branch = auto
+[push]
+	default = simple

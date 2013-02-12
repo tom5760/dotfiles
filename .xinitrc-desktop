@@ -1,0 +1,29 @@
+# For xdg stuff
+export DE=generic
+
+# For silly Java which can't deal with some window managers
+wmname LG3D &
+
+# Load in resources
+xrdb -merge ~/.Xresources
+
+# Keybindings
+setxkbmap -option ctrl:nocaps
+
+# Set up monitors
+~/bin/autorandr --force --change --default default
+~/bin/autorandr-monitor &
+
+# Screensaver
+xscreensaver -nosplash &
+
+# f.lux
+xflux -z 19123
+
+# Automount stuff
+usermount &
+
+# NetworkManager
+nm-applet &
+
+exec i3
