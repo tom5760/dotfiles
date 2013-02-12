@@ -53,9 +53,12 @@ def main(argv):
     for f in FILES:
         source, target = f
 
+        if not target:
+            target = source
+
         target = os.path.expanduser('~/' + target)
 
-        if not source:
+        if not source and not os.path.isdir(target):
             print 'Making:', target, '...'
             if not dry_run:
                 os.makedirs(target)
