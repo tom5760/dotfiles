@@ -23,7 +23,13 @@ xflux -z 19123
 # Automount stuff
 usermount &
 
+# Start a dbus session
+eval $(dbus-launch --sh-syntax --exit-with-session)
+
 # NetworkManager
 nm-applet &
+
+# PulseAudio
+start-pulseaudio-x11
 
 exec i3

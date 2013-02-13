@@ -8,6 +8,8 @@ order += "time"
 
 volume Master {
     format = "Vol: %volume"
+    device = "pulse"
+    mixer = "Master"
 }
 
 time {
