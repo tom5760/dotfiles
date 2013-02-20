@@ -8,17 +8,17 @@ wmname LG3D &
 xrdb -merge ~/.Xresources
 
 # Keybindings
-setxkbmap -option ctrl:nocaps
+setxkbmap -option ctrl:nocaps &
 
 # Set up monitors
-~/bin/autorandr --force --change --default default
+~/bin/autorandr --force --change --default default &
 ~/bin/autorandr-monitor &
 
 # Screensaver
 xscreensaver -nosplash &
 
 # f.lux
-xflux -z 19123
+xflux -z 19123 &
 
 # Automount stuff
 usermount &
@@ -30,6 +30,6 @@ eval $(dbus-launch --sh-syntax --exit-with-session)
 nm-applet &
 
 # PulseAudio
-start-pulseaudio-x11
+start-pulseaudio-x11 &
 
 exec i3
