@@ -46,6 +46,7 @@ set ruler
 set showcmd
 set wildmenu
 set viminfo^=!
+set list
 
 if exists("&colorcolumn")
     set colorcolumn=80 " Color column 80 differently
@@ -60,9 +61,9 @@ endif
 set display+=lastline
 
 if &listchars ==# 'eol:$'
-  set listchars=tab:>\ ,trail:-,extends:>,precedes:<,nbsp:+
+  set listchars=tab:\ \ ,trail:-,extends:>,precedes:<,nbsp:+
   if &termencoding ==# 'utf-8' || &encoding ==# 'utf-8'
-    let &listchars = "tab:\u21e5 ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
+    let &listchars = "tab:\ \ ,trail:\u2423,extends:\u21c9,precedes:\u21c7,nbsp:\u26ad"
   endif
 endif
 
