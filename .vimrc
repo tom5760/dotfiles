@@ -116,10 +116,9 @@ noremap <silent> <C-k> <C-w>k
 " CTRL+A jumps to beginning of line in command window
 cnoremap <C-A>     <Home>
 
-" For Fuzzy Finder
-nmap ,f :FufFileWithCurrentBufferDir<CR>
-nmap ,b :FufBuffer<CR>
-nmap ,t :FufTaggedFile<CR>
+" For ctrlp
+let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_switch_buffer = 'v'
 
 " Extra filetypes
 au BufRead,BufNewFile *.hx setfiletype javascript
