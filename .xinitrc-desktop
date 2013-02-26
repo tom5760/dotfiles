@@ -1,6 +1,9 @@
 # For xdg stuff
 export DE=generic
 
+# For QT apps to find GTK style
+export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+
 # For silly Java which can't deal with some window managers
 wmname LG3D &
 
