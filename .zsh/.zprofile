@@ -27,3 +27,8 @@ if [ -d ~/programs/android-ndk ]; then
     export ANDROID_NDK=$HOME/programs/android-ndk
     export PATH=$PATH:$ANDROID_NDK
 fi
+
+if [ -d ~/programs/go ]; then
+    export GOROOT=~/programs/go
+    export PATH=$PATH:$GOROOT/bin
+fi
