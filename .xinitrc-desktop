@@ -5,32 +5,29 @@ export DE=generic
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
 # For silly Java which can't deal with some window managers
-wmname LG3D &
+wmname LG3D
 
 # Load in resources
 xrdb -merge ~/.Xresources
 
 # Keybindings
-setxkbmap -option ctrl:nocaps &
+setxkbmap -option ctrl:nocaps
 
 # Set up monitors
-~/bin/autorandr --force --change --default default &
+~/bin/autorandr --force --change --default default
 ~/bin/autorandr-monitor &
 
 # Screensaver
 xscreensaver -nosplash &
 
 # f.lux
-xflux -z 19123 &
+xflux -z 19123
 
 # Automount stuff
 usermount &
 
 # Start a dbus session
 eval $(dbus-launch --sh-syntax --exit-with-session)
-
-# NetworkManager
-nm-applet &
 
 # PulseAudio
 start-pulseaudio-x11 &
