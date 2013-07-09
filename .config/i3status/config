@@ -3,21 +3,9 @@ general {
     interval = 5
 }
 
-order += "ethernet enp0s25"
-order += "wireless wlp3s0"
 order += "battery 0"
 order += "volume Master"
 order += "time"
-
-ethernet enp0s25 {
-    format_up = "Wired: up"
-    format_down = "Wired: down"
-}
-
-wireless wlp3s0 {
-    format_up = "WiFi: %essid(%quality)"
-    format_down = "WiFi: down"
-}
 
 battery 0 {
     format = "Bat: %percentage (%status)"
