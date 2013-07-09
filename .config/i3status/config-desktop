@@ -3,8 +3,20 @@ general {
     interval = 5
 }
 
+#order += "ethernet enp2s0"
+#order += "wireless wlp0s29u1u7"
 order += "volume Master"
 order += "time"
+
+ethernet enp2s0 {
+    format_up = "Wired: up"
+    format_down = "Wired: down"
+}
+
+wireless wlp0s29u1u7 {
+    format_up = "WiFi: %essid(%quality)"
+    format_down = "WiFi: down"
+}
 
 volume Master {
     format = "Vol: %volume"
