@@ -16,6 +16,17 @@ font -misc-fixed-medium-r-normal--10-100-75-75-C-60-iso10646-1
 # Use Mouse+$mod to drag floating windows to their wanted position
 floating_modifier $mod
 
+# One pixel borders
+new_window normal 1
+
+# Start i3bar to display a workspace bar (plus the system information i3status
+# finds out, if available)
+bar {
+    position top
+    status_command i3status
+    tray_output primary
+}
+
 # start a terminal
 bindsym $mod+Return exec uxterm
 
@@ -44,9 +55,6 @@ bindsym $mod+Shift+h move left
 bindsym $mod+Shift+j move down
 bindsym $mod+Shift+k move up
 bindsym $mod+Shift+l move right
-
-# One pixel borders
-new_window normal 1
 
 # split in horizontal orientation
 bindsym $mod+r split h
@@ -128,11 +136,3 @@ bindsym $mod+Ctrl+period move workspace to output right
 bindsym $mod+Ctrl+comma move workspace to output left
 bindsym $mod+Ctrl+greater move workspace to output up
 bindsym $mod+Ctrl+less move workspace to output down
-
-# Start i3bar to display a workspace bar (plus the system information i3status
-# finds out, if available)
-bar {
-    position top
-    status_command i3status
-    tray_output primary
-}
