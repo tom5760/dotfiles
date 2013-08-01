@@ -33,6 +33,10 @@ if [ -d ~/programs/go ]; then
     export PATH=$PATH:$GOROOT/bin
 fi
 
-if [ -d ~/documents/scripts ]; then
-    export PATH=$PATH:~/documents/scripts
+if [ -d ~/code/scripts ]; then
+    export PATH=$PATH:~/code/scripts
+fi
+
+if [ -d ~/.gem/ruby/2.0.0/bin ]; then
+    export PATH=$PATH:~/.gem/ruby/2.0.0/bin
 fi
