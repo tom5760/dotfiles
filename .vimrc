@@ -122,6 +122,9 @@ let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_switch_buffer = 'v'
 
 " Extra filetypes
-au BufRead,BufNewFile *.hx setfiletype javascript
+autocmd BufRead,BufNewFile *.hx setfiletype javascript
 
-au Filetype go setlocal noexpandtab
+autocmd Filetype go setlocal noexpandtab
+autocmd Filetype javascript setlocal tabstop=2
+autocmd Filetype javascript setlocal shiftwidth=2
+autocmd Filetype javascript setlocal softtabstop=2
