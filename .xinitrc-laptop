@@ -15,7 +15,6 @@ setxkbmap -option ctrl:nocaps &
 
 # Set up monitors
 ~/bin/autorandr --force --change --default default &
-~/bin/autorandr-monitor &
 
 # Screensaver
 xscreensaver -nosplash &
