@@ -32,6 +32,10 @@ if [ -d ~/programs/go ]; then
     export PATH=$PATH:$GOROOT/bin
 fi
 
+if [ -d ~/programs/npm ]; then
+    export PATH=$PATH:~/programs/npm/bin
+fi
+
 if [ -d ~/code/scripts ]; then
     export PATH=$PATH:~/code/scripts
 fi
