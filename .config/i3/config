@@ -38,11 +38,19 @@ bindsym $mod+p exec dmenu_run -i
 
 # Lock screen
 bindsym $mod+Shift+Ctrl+l exec xscreensaver-command -lock
+bindsym XF86ScreenSaver exec xscreensaver-command -lock
 
 # Volume
 bindsym XF86AudioMute exec amixer set Master toggle && killall -USR1 i3status
 bindsym XF86AudioLowerVolume exec amixer set Master 2%- && killall -USR1 i3status
 bindsym XF86AudioRaiseVolume exec amixer set Master 2%+ && killall -USR1 i3status
+
+# Backlight
+bindsym XF86MonBrightnessDown exec xbacklight -dec 10
+bindsym XF86MonBrightnessUp exec xbacklight -inc 10
+
+# Monitor config
+bindsym XF86Display exec autorandr -c -d default --force
 
 # change focus
 bindsym $mod+h focus left
