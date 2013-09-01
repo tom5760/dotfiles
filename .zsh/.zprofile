@@ -19,7 +19,6 @@ fi
 
 if [ -d ~/programs/android-sdk ]; then
     export ANDROID_HOME=$HOME/programs/android-sdk
-    export ANDROID_SWT=/usr/share/java
     export PATH=$PATH:$ANDROID_HOME/tools:$ANDROID_HOME/platform-tools
 fi
 
