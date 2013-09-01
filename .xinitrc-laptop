@@ -13,9 +13,6 @@ xrdb -merge ~/.Xresources
 # Keybindings
 setxkbmap -option ctrl:nocaps &
 
-# Set DPI on MacBook
-xrandr --dpi 96 &
-
 # Set up monitors
 ~/bin/autorandr --force --change --default default &
 ~/bin/autorandr-monitor &
