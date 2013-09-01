@@ -10,6 +10,7 @@ FILES = [
     ('.gitconfig',        ''),
     ('.hgrc',             ''),
     ('.latexmkrc',        ''),
+    ('.npmrc',            ''),
     ('.screenrc',         ''),
     ('.ssh/config',       ''),
     ('.vim',              ''),
