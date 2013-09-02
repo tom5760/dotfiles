@@ -1,6 +1,7 @@
 export PAGER=less
 export EDITOR=vim
 export BROWSER=chromium
+export CHROME_BIN=chromium
 export _JAVA_AWT_WM_NONREPARENTING=1
 export WORKON_HOME=$HOME/.virtualenvs
 
