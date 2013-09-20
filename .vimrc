@@ -121,8 +121,12 @@ cnoremap <C-A>     <Home>
 let g:ctrlp_cmd = 'CtrlPBuffer'
 let g:ctrlp_switch_buffer = 'v'
 
+" vim-multiple-cursors
+let g:multi_cursor_next_key='<C-m>'
+
 " Extra filetypes
 autocmd BufRead,BufNewFile *.hx setfiletype javascript
+autocmd BufRead,BufNewFile *.less setfiletype css
 
 autocmd Filetype go setlocal noexpandtab
 autocmd Filetype javascript setlocal tabstop=2
