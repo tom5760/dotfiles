@@ -7,6 +7,7 @@ import sys
 FILES = [
     ('.Xresources',       ''),
     ('.config/i3/config', ''),
+    ('.gemrc',            ''),
     ('.gitconfig',        ''),
     ('.hgrc',             ''),
     ('.latexmkrc',        ''),
