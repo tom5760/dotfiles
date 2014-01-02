@@ -134,13 +134,8 @@ bindsym $mod+Ctrl+j resize grow height 10 px or 4 ppt
 bindsym $mod+Ctrl+k resize shrink height 10 px or 4 ppt
 bindsym $mod+Ctrl+l resize grow width 10 px or 4 ppt
 
-# move focused container to other monitor
-bindsym $mod+period move container to output right
-bindsym $mod+comma move container to output left
-bindsym $mod+greater move container to output up
-bindsym $mod+less move container to output down
-
-bindsym $mod+Ctrl+period move workspace to output right
-bindsym $mod+Ctrl+comma move workspace to output left
-bindsym $mod+Ctrl+greater move workspace to output up
-bindsym $mod+Ctrl+less move workspace to output down
+# move focused workspace to other monitor
+bindsym $mod+period move workspace to output right
+bindsym $mod+comma move workspace to output left
+bindsym $mod+greater move workspace to output up
+bindsym $mod+less move workspace to output down
