@@ -43,3 +43,7 @@ fi
 if [ -d ~/.gem/ruby/2.0.0/bin ]; then
     export PATH=$PATH:~/.gem/ruby/2.0.0/bin
 fi
+
+if [ -d ~/.gem/ruby/2.1.0/bin ]; then
+    export PATH=$PATH:~/.gem/ruby/2.1.0/bin
+fi
