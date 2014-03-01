@@ -5,21 +5,22 @@ import socket
 import sys
 
 FILES = [
-    ('.Xresources',       ''),
-    ('.config/i3/config', ''),
-    ('.gitconfig',        ''),
-    ('.hgrc',             ''),
-    ('.latexmkrc',        ''),
-    ('.npmrc',            ''),
-    ('.screenrc',         ''),
-    ('.ssh/config',       ''),
-    ('.vim',              ''),
-    ('.vimrc',            ''),
-    ('.zsh',              ''),
-    ('.zshenv',           ''),
-    ('',                  '.local/share/vim/swap'),
-    ('',                  '.local/share/vim/backup'),
-    ('',                  '.local/share/vim/undo'),
+    ('.Xresources',           ''),
+    ('.config/i3/config',     ''),
+    ('.config/dunst/dunstrc', ''),
+    ('.gitconfig',            ''),
+    ('.hgrc',                 ''),
+    ('.latexmkrc',            ''),
+    ('.npmrc',                ''),
+    ('.screenrc',             ''),
+    ('.ssh/config',           ''),
+    ('.vim',                  ''),
+    ('.vimrc',                ''),
+    ('.zsh',                  ''),
+    ('.zshenv',               ''),
+    ('',                      '.local/share/vim/swap'),
+    ('',                      '.local/share/vim/backup'),
+    ('',                      '.local/share/vim/undo'),
 ]
 
 HOSTNAME = socket.gethostname()
