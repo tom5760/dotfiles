@@ -6,6 +6,14 @@ export DE=generic
 # For QT apps to find GTK style
 export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
 
+# Set up monitors
+~/bin/autorandr --force --change --default default
+
+# Start a dbus session
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && type dbus-launch >/dev/null; then
+  eval $(dbus-launch --sh-syntax --exit-with-session)
+fi
+
 # For silly Java which can't deal with some window managers
 wmname LG3D &
 
@@ -14,9 +22,6 @@ xrdb -merge ~/.Xresources
 
 # Keybindings
 setxkbmap -option ctrl:nocaps &
-
-# Set up monitors
-~/bin/autorandr --force --change --default default &
 
 # Screensaver
 xscreensaver -nosplash &
@@ -27,14 +32,11 @@ xflux -z 19123 &
 # Automount stuff
 usermount &
 
-# Start a dbus session
-eval $(dbus-launch --sh-syntax --exit-with-session)
-
 # NetworkManager
 nm-applet &
 
 # PulseAudio
-start-pulseaudio-x11 &
+start-pulseaudio-x11
 
 # Touchpad settings
 synclient CoastingSpeed=0 PalmDetect=1 TapButton1=0 TapButton2=0 TapButton3=0 HorizTwoFingerScroll=1
