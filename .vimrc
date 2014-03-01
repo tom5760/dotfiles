@@ -129,7 +129,17 @@ autocmd BufRead,BufNewFile *.hx setfiletype javascript
 autocmd BufRead,BufNewFile *.less setfiletype css
 
 autocmd Filetype go setlocal noexpandtab
+
 autocmd Filetype javascript setlocal tabstop=2
 autocmd Filetype javascript setlocal shiftwidth=2
 autocmd Filetype javascript setlocal softtabstop=2
+
+autocmd Filetype html setlocal tabstop=2
+autocmd Filetype html setlocal shiftwidth=2
+autocmd Filetype html setlocal softtabstop=2
+
+autocmd Filetype scss setlocal tabstop=2
+autocmd Filetype scss setlocal shiftwidth=2
+autocmd Filetype scss setlocal softtabstop=2
+
 autocmd Filetype gitcommit setlocal spell
