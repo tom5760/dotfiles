@@ -127,6 +127,7 @@ let g:multi_cursor_next_key='<C-m>'
 " Extra filetypes
 autocmd BufRead,BufNewFile *.hx setfiletype javascript
 autocmd BufRead,BufNewFile *.less setfiletype css
+autocmd BufRead,BufNewFile *.gradle setfiletype groovy
 
 autocmd Filetype go setlocal noexpandtab
 
