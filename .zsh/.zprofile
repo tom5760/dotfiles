@@ -24,6 +24,7 @@ fi
 
 if [ -d ~/programs/android-ndk ]; then
     export ANDROID_NDK=$HOME/programs/android-ndk
+    export ANDROID_NDK_HOME=$HOME/programs/android-ndk
     export PATH=$PATH:$ANDROID_NDK
 fi
 
