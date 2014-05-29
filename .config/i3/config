@@ -27,6 +27,8 @@ bar {
     tray_output primary
 }
 
+assign [instance="^crx_nckgahadagoaajjgafhacjanaoiihapd$"] 2
+
 # start a terminal
 bindsym $mod+Return exec uxterm
 
