@@ -28,7 +28,7 @@ if [ -d ~/programs/android-ndk ]; then
 fi
 
 if [ -d ~/programs/go ]; then
-    export GOROOT=~/programs/go
+    export GOPATH=~/programs/go
     export PATH=$PATH:$GOROOT/bin
 fi
 
