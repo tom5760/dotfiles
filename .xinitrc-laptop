@@ -1,18 +1,18 @@
-#!/bin/sh
+#!/usr/bin/fish
 
 # For xdg stuff
-export DE=generic
+set -x DE generic
 
 # For QT apps to find GTK style
-export GTK2_RC_FILES="$HOME/.gtkrc-2.0"
+set -x GTK2_RC_FILES "$HOME/.gtkrc-2.0"
 
 # Set up monitors
 ~/bin/autorandr --force --change --default default
 
 # Start a dbus session
-if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && type dbus-launch >/dev/null; then
-  eval $(dbus-launch --sh-syntax --exit-with-session)
-fi
+#if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && type dbus-launch >/dev/null; then
+#  eval $(dbus-launch --sh-syntax --exit-with-session)
+#fi
 
 # For silly Java which can't deal with some window managers
 wmname LG3D &
@@ -43,8 +43,7 @@ synclient CoastingSpeed=0 PalmDetect=1 TapButton1=0 TapButton2=0 TapButton3=0 Ho
 
 # Set background
 if [ -f ~/.fehbg ]
-then
-    eval $(cat ~/.fehbg)
-fi
+    eval (cat ~/.fehbg)
+end
 
 exec i3
