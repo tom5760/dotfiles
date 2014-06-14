@@ -33,9 +33,9 @@ set cursorline
 set confirm
 set shortmess+=a
 set nowrap
-set tabstop=4
-set shiftwidth=4
-set softtabstop=4
+set tabstop=2
+set shiftwidth=2
+set softtabstop=2
 set expandtab
 set history=1000
 set hidden
@@ -130,17 +130,5 @@ autocmd BufRead,BufNewFile *.less setfiletype css
 autocmd BufRead,BufNewFile *.gradle setfiletype groovy
 
 autocmd Filetype go setlocal noexpandtab
-
-autocmd Filetype javascript setlocal tabstop=2
-autocmd Filetype javascript setlocal shiftwidth=2
-autocmd Filetype javascript setlocal softtabstop=2
-
-autocmd Filetype html setlocal tabstop=2
-autocmd Filetype html setlocal shiftwidth=2
-autocmd Filetype html setlocal softtabstop=2
-
-autocmd Filetype scss setlocal tabstop=2
-autocmd Filetype scss setlocal shiftwidth=2
-autocmd Filetype scss setlocal softtabstop=2
 
 autocmd Filetype gitcommit setlocal spell
