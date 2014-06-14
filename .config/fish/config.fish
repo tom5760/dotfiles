@@ -47,14 +47,6 @@ function verify-agent-vars -d 'Check if ssh-agent is running'
   return 0
 end
 
-function save-agent-vars -d 'Save ssh-agent environment variables'
-  set -Ux SSH_AGENT_PID $SSH_AGENT_PID
-  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-  set -Ux SSH_CLIENT $SSH_CLIENT
-  set -Ux SSH_CONNECTION $SSH_CONNECTION
-  set -Ux SSH_TTY $SSH_TTY
-end
-
 function load-agent-keys -d 'Load ssh-agent default keys'
   ssh-add
   ssh-add ~/.ssh/id_rsa_lifeshield
@@ -62,17 +54,18 @@ function load-agent-keys -d 'Load ssh-agent default keys'
 end
 
 function setup-keychain -d 'Set up ssh-agent keychain'
-  # If ssh-agent is already running, persist the environment variables
+  # Make sure global variables don't hide our universal variabled.
+  set -eg SSH_AGENT_PID
+  set -eg SSH_AUTH_SOCK
+
   if verify-agent-vars
-    save-agent-vars
     return 0
   end
 
   # Otherwise, start it
-  eval (ssh-agent -c)
+  eval (ssh-agent -c | sed 's/setenv/set -Ux/')
+
   if verify-agent-vars
-    # If started successfully, save the environment variables, and load keys
-    save-agent-vars
     load-agent-keys
   else
     return 1
@@ -80,7 +73,7 @@ function setup-keychain -d 'Set up ssh-agent keychain'
 end
 
 # Only run path stuff if this is a login shell
-if status -l
+if status --is-login
   prepend-path ~/bin
 
   if prepend-path ~/prefix/bin
@@ -112,12 +105,11 @@ if status -l
 end
 
 # Only run this stuff if this is an interactive shell
-if status -i
+if status --is-interactive
   set -x PAGER less
   set -x EDITOR vim
   set -x BROWSER chromium
   set -x CHROME_BIN chromium
-  set -x _JAVA_AWT_WM_NONREPARENTING 1
 
   setup-keychain
 end

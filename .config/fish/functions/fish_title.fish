@@ -7,5 +7,5 @@ function fish_title -d 'Write out the window title'
     set -g __fish_title true
   end
 
-  echo $USER@$__fish_prompt_hostname">" (prompt_pwd)
+  echo $USER@$__fish_prompt_hostname">" (pwd | sed "s:$HOME:~:")
 end
