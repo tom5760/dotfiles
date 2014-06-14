@@ -10,11 +10,12 @@ set -x GTK2_RC_FILES "$HOME/.gtkrc-2.0"
 ~/bin/autorandr --force --change --default default
 
 # Start a dbus session
-#if [ -z "$DBUS_SESSION_BUS_ADDRESS" ] && type dbus-launch >/dev/null; then
-#  eval $(dbus-launch --sh-syntax --exit-with-session)
-#fi
+if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; and type dbus-launch >/dev/null
+  eval (dbus-launch --exit-with-session | sed 's:=: :' | awk '{ print "set -x " $1 " \'" $2 "\';" }')
+end
 
 # For silly Java which can't deal with some window managers
+set -x _JAVA_AWT_WM_NONREPARENTING 1
 wmname LG3D &
 
 # Load in resources
