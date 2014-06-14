@@ -1,3 +1,3 @@
-function ll
-    ls -l
+function ll -d 'Alias for ls'
+  ls -l
 end

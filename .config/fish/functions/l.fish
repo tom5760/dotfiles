@@ -1,3 +1,3 @@
-function l
-    ls -CF
+function l -d 'Alias for ls'
+  ls -CF
 end

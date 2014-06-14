@@ -1,111 +1,123 @@
 # Disable greeting message
 set fish_greeting ""
 
-function -a path prepend-path
-    if [ -d $path ]
-        set -U fish_user_paths $path $fish_user_paths
-        return 0
-    end
-    return 1
-end
-
-function -a path append-path
-    if [ -d $path ]
-        set -U fish_user_paths $fish_user_paths $path
-        return 0
-    end
-    return 1
-end
-
-function verify-agent-vars
-    if [ -z "$SSH_AUTH_SOCK" ]
-        return 1
-    end
-
-    if [ -z "$SSH_AGENT_PID" -a -z "$SSH_CLIENT" ]
-        return 1
-    end
-
-    if [ -n "$SSH_AGENT_PID" -a ! -O /proc/"$SSH_AGENT_PID" ]
-        return 1
-    end
-
-    if [ ! -S "$SSH_AUTH_SOCK" ]
-        return 1
-    end
-
-    if [ ! -O "$SSH_AUTH_SOCK" ]
-        return 1
-    end
-
-    ssh-add -l > /dev/null > /dev/null ^&1
-
-    if [ $status -eq 2 ]
-        return 1
-    end
-
+function prepend-path -a path -d 'Append to PATH if directory exists'
+  if [ -d $path ]
+    set -x PATH $path $PATH
     return 0
+  end
+  return 1
 end
 
-function save-agent-vars
-    set -Ux SSH_AGENT_PID $SSH_AGENT_PID
-    set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
-    set -Ux SSH_CLIENT $SSH_CLIENT
-    set -Ux SSH_CONNECTION $SSH_CONNECTION
-    set -Ux SSH_TTY $SSH_TTY
+function append-path -a path -d 'Prepend to PATH if directory exists'
+  if [ -d $path ]
+    set -x PATH $PATH $path
+    return 0
+  end
+  return 1
 end
 
-function setup-keychain
-    if verify-agent-vars
-        save-agent-vars
-        return 0
-    end
+function verify-agent-vars -d 'Check if ssh-agent is running'
+  if [ -z "$SSH_AUTH_SOCK" ]
+    return 1
+  end
 
-    eval (ssh-agent -c)
-    if verify-agent-vars
-        save-agent-vars
-    else
-        return 1
-    end
+  if [ -z "$SSH_AGENT_PID" -a -z "$SSH_CLIENT" ]
+    return 1
+  end
+
+  if [ -n "$SSH_AGENT_PID" -a ! -O /proc/"$SSH_AGENT_PID" ]
+    return 1
+  end
+
+  if [ ! -S "$SSH_AUTH_SOCK" ]
+    return 1
+  end
+
+  if [ ! -O "$SSH_AUTH_SOCK" ]
+    return 1
+  end
+
+  ssh-add -l > /dev/null > /dev/null ^&1
+
+  if [ $status -eq 2 ]
+    return 1
+  end
+
+  return 0
 end
 
+function save-agent-vars -d 'Save ssh-agent environment variables'
+  set -Ux SSH_AGENT_PID $SSH_AGENT_PID
+  set -Ux SSH_AUTH_SOCK $SSH_AUTH_SOCK
+  set -Ux SSH_CLIENT $SSH_CLIENT
+  set -Ux SSH_CONNECTION $SSH_CONNECTION
+  set -Ux SSH_TTY $SSH_TTY
+end
+
+function load-agent-keys -d 'Load ssh-agent default keys'
+  ssh-add
+  ssh-add ~/.ssh/id_rsa_lifeshield
+  ssh-add ~/.ssh/id_dsa_lsdev
+end
+
+function setup-keychain -d 'Set up ssh-agent keychain'
+  # If ssh-agent is already running, persist the environment variables
+  if verify-agent-vars
+    save-agent-vars
+    return 0
+  end
+
+  # Otherwise, start it
+  eval (ssh-agent -c)
+  if verify-agent-vars
+    # If started successfully, save the environment variables, and load keys
+    save-agent-vars
+    load-agent-keys
+  else
+    return 1
+  end
+end
+
+# Only run path stuff if this is a login shell
 if status -l
-    prepend-path ~/bin
+  prepend-path ~/bin
 
-    if prepend-path ~/prefix/bin
-        set -x MANPATH ~/prefix/share/man:$MANPATH
-        set -x INFOPATH ~/prefix/share/info:$INFOPATH
-    end
+  if prepend-path ~/prefix/bin
+    set -x MANPATH ~/prefix/share/man:$MANPATH
+    set -x INFOPATH ~/prefix/share/info:$INFOPATH
+  end
 
-    if append-path /opt/bin
-        set -x MANPATH $MANPATH:/opt/man
-        set -x INFOPATH $INFOPATH:/opt/info
-    end
+  if append-path /opt/bin
+    set -x MANPATH $MANPATH:/opt/man
+    set -x INFOPATH $INFOPATH:/opt/info
+  end
 
-    if append-path ~/programs/android-sdk/tools; and append-path ~/programs/android-sdk/platform-tools
-        set -x $ANDROID_HOME ~/programs/android-sdk
-    end
+  if append-path ~/programs/android-sdk/tools; and append-path ~/programs/android-sdk/platform-tools
+    set -x $ANDROID_HOME ~/programs/android-sdk
+  end
 
-    if append-path ~/programs/android-ndk
-        set -x ANDROID_NDK ~/programs/android-ndk
-        set -x ANDROID_NDK_HOME $ANDROID_NDK
-    end
+  if append-path ~/programs/android-ndk
+    set -x ANDROID_NDK ~/programs/android-ndk
+    set -x ANDROID_NDK_HOME $ANDROID_NDK
+  end
 
-    if append-path ~/programs/go/bin
-        set -x GOPATH ~/programs/go
-    end
+  if append-path ~/programs/go/bin
+    set -x GOPATH ~/programs/go
+  end
 
-    append-path ~/programs/npm/bin
-    append-path ~/code/scripts
-    append-path ~/.gem/ruby/2.1.0/bin
+  append-path ~/programs/npm/bin
+  append-path ~/code/scripts
+  append-path ~/.gem/ruby/2.1.0/bin
 end
 
+# Only run this stuff if this is an interactive shell
 if status -i
-    set -x PAGER less
-    set -x EDITOR vim
-    set -x BROWSER chromium
-    set -x CHROME_BIN chromium
-    set -x _JAVA_AWT_WM_NONREPARENTING 1
+  set -x PAGER less
+  set -x EDITOR vim
+  set -x BROWSER chromium
+  set -x CHROME_BIN chromium
+  set -x _JAVA_AWT_WM_NONREPARENTING 1
 
-    setup-keychain
+  setup-keychain
 end
