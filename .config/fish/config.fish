@@ -54,10 +54,6 @@ function load-agent-keys -d 'Load ssh-agent default keys'
 end
 
 function setup-keychain -d 'Set up ssh-agent keychain'
-  # Make sure global variables don't hide our universal variabled.
-  set -eg SSH_AGENT_PID
-  set -eg SSH_AUTH_SOCK
-
   if verify-agent-vars
     return 0
   end
