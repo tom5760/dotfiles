@@ -65,11 +65,7 @@ function setup-keychain -d 'Set up ssh-agent keychain'
   # Otherwise, start it
   eval (ssh-agent -c | sed 's/setenv/set -Ux/')
 
-  if verify-agent-vars
-    load-agent-keys
-  else
-    return 1
-  end
+  verify-agent-vars
 end
 
 # Only run path stuff if this is a login shell
