@@ -38,6 +38,13 @@ function verify-agent-vars -d 'Check if ssh-agent is running'
     return 1
   end
 
+  # Load our universal variables as exported globals.
+  for v in SSH_AUTH_SOCK SSH_AGENT_PID SSH_CLIENT
+    if set -Uq $v
+      set -gx $v $$v
+    end
+  end
+
   ssh-add -l > /dev/null > /dev/null ^&1
 
   if [ $status -eq 2 ]
@@ -47,19 +54,13 @@ function verify-agent-vars -d 'Check if ssh-agent is running'
   return 0
 end
 
-function load-agent-keys -d 'Load ssh-agent default keys'
-  ssh-add
-  ssh-add ~/.ssh/id_rsa_lifeshield
-  ssh-add ~/.ssh/id_dsa_lsdev
-end
-
 function setup-keychain -d 'Set up ssh-agent keychain'
   if verify-agent-vars
     return 0
   end
 
   # Otherwise, start it
-  eval (ssh-agent -c | sed 's/setenv/set -Ux/')
+  eval (ssh-agent -c | sed 's/setenv/set -U/')
 
   verify-agent-vars
 end
