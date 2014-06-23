@@ -16,6 +16,7 @@ end
 
 # For silly Java which can't deal with some window managers
 set -x _JAVA_AWT_WM_NONREPARENTING 1
+set -x _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
 wmname LG3D &
 
 # Load in resources
