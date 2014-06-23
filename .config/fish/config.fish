@@ -80,7 +80,7 @@ if status --is-login
   end
 
   if append-path ~/programs/android-sdk/tools; and append-path ~/programs/android-sdk/platform-tools
-    set -x $ANDROID_HOME ~/programs/android-sdk
+    set -x ANDROID_HOME ~/programs/android-sdk
   end
 
   if append-path ~/programs/android-ndk
