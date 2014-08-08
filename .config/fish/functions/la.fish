@@ -1,3 +1,3 @@
 function la -d 'Alias for ls'
-  ls -A
+  ls -A $argv
 end

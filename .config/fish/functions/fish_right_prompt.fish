@@ -15,5 +15,5 @@ function fish_right_prompt -d 'Write out the right side prompt'
 
   # Print out a timestamp
   echo "<"
-  date "+%-I:%m:%S"
+  date "+%-I:%M:%S"
 end
