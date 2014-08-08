@@ -13,3 +13,6 @@
 	branch = auto
 [push]
 	default = simple
+[alias]
+  pushnew = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
+  treelog = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
