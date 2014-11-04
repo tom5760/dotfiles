@@ -104,5 +104,7 @@ if status --is-interactive
   set -x BROWSER chromium
   set -x CHROME_BIN chromium
 
+  set -x JAVA_HOME /usr/lib/jvm/default
+
   setup-keychain
 end
