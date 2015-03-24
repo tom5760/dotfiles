@@ -20,7 +20,6 @@ set backspace=indent,eol,start
 set complete-=i
 set smarttab
 set nrformats-=octal
-set shiftround
 set ttimeout
 set ttimeoutlen=50
 set incsearch
@@ -102,7 +101,7 @@ nnoremap Y y$
 
 "" Colorscheme
 set background=dark
-colorscheme solarized
+colorscheme base16-solarized
 
 "" Keybindings
 " Use <C-n> to clear the highlighting of :set hlsearch.
