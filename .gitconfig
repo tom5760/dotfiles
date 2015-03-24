@@ -5,7 +5,8 @@
 	editor = vim
 	pager = less
 [merge]
-	tool = vimdiff
+  #tool = vimdiff
+  tool = meld
 [color]
 	ui = auto
 	diff = auto
