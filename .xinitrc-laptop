@@ -29,8 +29,7 @@ setxkbmap -option ctrl:nocaps &
 xscreensaver -nosplash &
 
 # f.lux
-#xflux -z 19123 &
-redshift &
+xflux -z 19123 &
 
 # Automount stuff
 usermount &
