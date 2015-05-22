@@ -8,6 +8,7 @@ FILES = [
     ('.Xresources',           ''),
     ('.config/i3/config',     ''),
     ('.config/dunst/dunstrc', ''),
+    ('.config/cower/config',  ''),
     ('.config/fish',          ''),
     ('.gitconfig',            ''),
     ('.hgrc',                 ''),
