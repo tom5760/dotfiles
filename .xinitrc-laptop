@@ -9,11 +9,6 @@ set -x GTK2_RC_FILES "$HOME/.gtkrc-2.0"
 # Set up monitors
 ~/bin/autorandr --force --change --default default
 
-# Start a dbus session
-if [ -z "$DBUS_SESSION_BUS_ADDRESS" ]; and type dbus-launch >/dev/null
-  eval (dbus-launch --exit-with-session | sed 's:=: :' | awk '{ print "set -x " $1 " \'" $2 "\';" }')
-end
-
 # For silly Java which can't deal with some window managers
 set -x _JAVA_AWT_WM_NONREPARENTING 1
 set -x _JAVA_OPTIONS '-Dawt.useSystemAAFontSettings=on -Dswing.aatext=true -Dswing.defaultlaf=com.sun.java.swing.plaf.gtk.GTKLookAndFeel'
@@ -22,7 +17,7 @@ wmname LG3D &
 # Load in resources
 xrdb -merge ~/.Xresources
 
-# Keybindings
+# Replace caps lock with ctrl
 setxkbmap -option ctrl:nocaps &
 
 # Screensaver
@@ -37,15 +32,22 @@ usermount &
 # NetworkManager
 nm-applet &
 
+# For notifications
+dunst &
+
 # PulseAudio
 start-pulseaudio-x11
 
 # Touchpad settings
-synclient CoastingSpeed=0 PalmDetect=1 TapButton1=0 TapButton2=0 TapButton3=0 HorizTwoFingerScroll=1
+synclient \
+  CoastingSpeed=0 \
+  PalmDetect=1 \
+  TapButton1=0 \
+  TapButton2=0 \
+  TapButton3=0 \
+  HorizTwoFingerScroll=1
 
 # Set background
-if [ -f ~/.fehbg ]
-    eval (cat ~/.fehbg)
-end
+feh --bg-max ~/media/images/globe.jpg
 
 exec i3
