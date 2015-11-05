@@ -1,6 +1,9 @@
 # Disable greeting message
 set fish_greeting ""
 
+# Base16 Shell color scheme
+eval sh "$HOME/documents/dotfiles/base16-shell/base16-solarized.dark.sh"
+
 function prepend-path -a path -d 'Append to PATH if directory exists'
   if [ -d $path ]
     set -x PATH $path $PATH
