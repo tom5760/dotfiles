@@ -16,5 +16,5 @@
 	default = simple
 [alias]
   pushnew = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
-  treelog = log --graph --pretty=format:'%Cred%h%Creset %C(yellow)%an%d%Creset %s %Cgreen(%cr)%Creset' --date=relative
+  lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(yellow)%an%d%Creset %s' --date=relative
   mdiff = difftool --dir-diff -t meld
