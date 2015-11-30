@@ -1,0 +1,4 @@
+#!/bin/sh
+
+# Reset background
+feh --bg-max ~/media/images/globe.jpg

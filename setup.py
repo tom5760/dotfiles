@@ -9,6 +9,7 @@ FILES = [
     ('.config/i3/config',     ''),
     ('.config/dunst/dunstrc', ''),
     ('.config/cower/config',  ''),
+    ('.config/autorandr',     ''),
     ('.config/fish',          ''),
     ('.gitconfig',            ''),
     ('.hgrc',                 ''),
