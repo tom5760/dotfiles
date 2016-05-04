@@ -3,18 +3,15 @@
 	email = tom5760@gmail.com
 [core]
 	editor = vim
-	pager = less
 [merge]
-  #tool = vimdiff
   tool = meld
-[color]
-	ui = auto
-	diff = auto
-	status = auto
-	branch = auto
+[stash]
+	showPatch = true
 [push]
 	default = simple
 [alias]
   pushnew = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
   lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(yellow)%an%d%Creset %s' --date=relative
   mdiff = difftool --dir-diff -t meld
+[color]
+	ui = auto
