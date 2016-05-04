@@ -89,12 +89,16 @@ if status --is-login
   end
 
   if append-path ~/programs/go/bin
-    set -x GOPATH ~/programs/go
+    set -x GOROOT ~/programs/go
   end
 
-  append-path ~/programs/npm/bin
+  if append-path ~/programs/go-tools/bin
+    set -x GOPATH ~/programs/go-tools
+  end
+
   append-path ~/code/scripts
-  append-path ~/.gem/ruby/2.1.0/bin
+  append-path ~/programs/npm/bin
+  append-path ~/programs/android-studio/bin
 end
 
 # Only run this stuff if this is an interactive shell
