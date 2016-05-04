@@ -134,3 +134,15 @@ autocmd BufRead,BufNewFile *.gradle setfiletype groovy
 autocmd Filetype go setlocal noexpandtab
 
 autocmd Filetype gitcommit setlocal spell
+
+au FileType go nmap <Leader>gd <Plug>(go-def-split)
+au FileType go nmap <Leader>gs <Plug>(go-implements)
+au FileType go nmap <Leader>gi <Plug>(go-info)
+au FileType go nmap <Leader>gr <Plug>(go-rename)
+au FileType go nmap <Leader>gv <Plug>(go-vet)
+au FileType go nmap <Leader>gb <Plug>(go-install)
+
+let g:go_def_reuse_buffer = 1
+let g:go_auto_type_info = 1
+let g:go_metalinter_autosave = 1
+let g:go_gorename_prefill = 0
