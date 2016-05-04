@@ -48,3 +48,6 @@ xterm*color18:      base01
 xterm*color19:      base02
 xterm*color20:      base04
 xterm*color21:      base06
+
+! Mouse cursor size
+Xcursor.size: 16
