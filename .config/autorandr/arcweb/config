@@ -1,0 +1,24 @@
+output DP1
+off
+output DP2
+off
+output DP3
+off
+output HDMI2
+off
+output HDMI3
+off
+output VGA1
+off
+output VIRTUAL1
+off
+output HDMI1
+gamma 1.031:1.0:1.02
+mode 1920x1080
+pos 0x0
+rate 60.00
+output LVDS1
+gamma 1.031:1.0:1.02
+mode 1366x768
+pos 0x1080
+rate 60.02
