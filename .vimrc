@@ -144,5 +144,12 @@ au FileType go nmap <Leader>gb <Plug>(go-install)
 
 let g:go_def_reuse_buffer = 1
 let g:go_auto_type_info = 1
-let g:go_metalinter_autosave = 1
+let g:go_fmt_autosave = 1
 let g:go_gorename_prefill = 0
+
+let g:tsuquyomi_disable_default_mappings = 1
+let g:tsuquyomi_disable_quickfix = 1
+au FileType typescript nmap <Leader>td <Plug>(TsuquyomiDefinition)
+au FileType typescript nmap <Leader>tb <Plug>(TsuquyomiGoBack)
+au FileType typescript nmap <Leader>tr <Plug>(TsuquyomiReferences)
+au FileType typescript nmap <buffer> <Leader>ti : <C-u>echo tsuquyomi#hint()<CR>
