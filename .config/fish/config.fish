@@ -67,6 +67,9 @@ end
 
 # Only run path stuff if this is a login shell
 if status --is-login
+  # Include environment variables from /etc/profile
+  env -i HOME=$HOME bash -l -c 'export -p' | sed -e "/PATH/s/'//g;/PATH/s/:/ /g;s/=/ /;s/^declare/set/" | source
+
   prepend-path ~/bin
 
   if prepend-path ~/prefix/bin
