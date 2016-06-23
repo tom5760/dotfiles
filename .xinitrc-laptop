@@ -38,15 +38,6 @@ dunst &
 # PulseAudio
 start-pulseaudio-x11
 
-# Touchpad settings
-synclient \
-  CoastingSpeed=0 \
-  PalmDetect=1 \
-  TapButton1=0 \
-  TapButton2=0 \
-  TapButton3=0 \
-  HorizTwoFingerScroll=1
-
 # Set background
 feh --bg-max ~/media/images/globe.jpg
 
