@@ -15,3 +15,5 @@
   mdiff = difftool --dir-diff -t meld
 [color]
 	ui = auto
+[commit]
+	verbose = true
