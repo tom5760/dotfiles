@@ -3,6 +3,9 @@
 
 set nocompatible     " Don't try to be vi compatible
 
+runtime bundle/vim-pathogen/autoload/pathogen.vim
+execute pathogen#infect()
+
 if has('autocmd')
   filetype plugin indent on
 endif
@@ -132,6 +135,12 @@ autocmd Filetype go setlocal noexpandtab
 
 autocmd Filetype gitcommit setlocal spell
 
+" For vim-go
+let g:go_def_reuse_buffer = 1
+let g:go_auto_type_info = 1
+let g:go_fmt_autosave = 1
+let g:go_gorename_prefill = 0
+
 au FileType go nmap <Leader>gd <Plug>(go-def-split)
 au FileType go nmap <Leader>gs <Plug>(go-implements)
 au FileType go nmap <Leader>gi <Plug>(go-info)
@@ -139,11 +148,7 @@ au FileType go nmap <Leader>gr <Plug>(go-rename)
 au FileType go nmap <Leader>gv <Plug>(go-vet)
 au FileType go nmap <Leader>gb <Plug>(go-install)
 
-let g:go_def_reuse_buffer = 1
-let g:go_auto_type_info = 1
-let g:go_fmt_autosave = 1
-let g:go_gorename_prefill = 0
-
+" For Typescript tsuquyomi
 let g:tsuquyomi_disable_default_mappings = 1
 let g:tsuquyomi_disable_quickfix = 1
 au FileType typescript nmap <Leader>td <Plug>(TsuquyomiDefinition)
