@@ -172,4 +172,4 @@ bindsym $mod+n exec --no-startup-id i3-input -F 'workspace %s' -P 'jump to works
 bindsym $mod+Shift+n exec --no-startup-id i3-input -F 'rename workspace to %s' -P 'rename workspace: '
 
 # move to named workspace
-bindsym $mod+Shift+Ctrl+n exec --no-startup-id i3-input -F 'move container to workspace%s' -P 'move to workspace: '
+bindsym $mod+Shift+Ctrl+n exec --no-startup-id i3-input -F 'move container to workspace %s' -P 'move to workspace: '
