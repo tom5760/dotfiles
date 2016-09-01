@@ -3,9 +3,6 @@
 
 set nocompatible     " Don't try to be vi compatible
 
-runtime bundle/vim-pathogen/autoload/pathogen.vim
-execute pathogen#infect()
-
 if has('autocmd')
   filetype plugin indent on
 endif
