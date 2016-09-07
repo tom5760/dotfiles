@@ -114,7 +114,7 @@ if status --is-interactive
   set -x JAVA_HOME /usr/lib/jvm/default
 
   # Base16 Shell color scheme
-  eval sh "$HOME/documents/dotfiles/base16-shell/base16-solarized.dark.sh"
+  eval sh "$HOME/documents/dotfiles/base16-shell/scripts/base16-solarized-dark.sh"
 
   setup-keychain
 end
