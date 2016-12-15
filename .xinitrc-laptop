@@ -12,19 +12,22 @@ xrandr --output LVDS1 --primary
 
 # For silly Java which can't deal with some window managers
 set -x _JAVA_AWT_WM_NONREPARENTING 1
-wmname LG3D &
+wmname LG3D
 
 # Load in resources
 xrdb -merge ~/.Xresources
 
 # Replace caps lock with ctrl
-setxkbmap -option ctrl:nocaps &
+setxkbmap -option ctrl:nocaps
 
 # Screensaver
 xscreensaver -nosplash &
 
 # f.lux
-xflux -z 19123 &
+xflux -z 19123
+
+# For notifications
+dunst &
 
 # Automount stuff
 usermount &
@@ -32,13 +35,7 @@ usermount &
 # NetworkManager
 nm-applet &
 
-# For notifications
-dunst &
-
 # PulseAudio
 start-pulseaudio-x11
-
-# Set background
-feh --bg-max ~/media/images/globe.jpg
 
 exec i3
