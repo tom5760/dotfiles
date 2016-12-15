@@ -1,0 +1,30 @@
+{
+    "editor.fontSize": 12,
+    "editor.wrappingColumn": -1,
+    "editor.lineNumbers": "off",
+    "editor.tabSize": 2,
+    "editor.renderWhitespace": "boundary",
+    "editor.renderLineHighlight": "all",
+
+    "window.fullScreenZenMode": false,
+    "workbench.activityBar.visible": false,
+    "workbench.editor.showTabs": false,
+
+    "files.trimTrailingWhitespace": true,
+    "files.insertFinalNewline": true,
+    "files.exclude": {
+      "**/.git": true,
+      "**/.svn": true,
+      "**/.hg": true,
+      "**/.DS_Store": true,
+      "**/dist": true
+    },
+
+    "terminal.external.linuxExec": "uxterm",
+    "terminal.integrated.fontSize": 12,
+
+    "telemetry.enableTelemetry": false,
+    "telemetry.enableCrashReporter": false,
+
+    "vim.hlsearch": true
+  }
