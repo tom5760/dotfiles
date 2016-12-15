@@ -28,7 +28,7 @@ set mouse=a
 set hlsearch
 set ignorecase
 set smartcase
-set cursorline
+"set cursorline
 set confirm
 set shortmess+=a
 set nowrap
@@ -46,10 +46,7 @@ set showcmd
 set wildmenu
 set viminfo^=!
 set list
-
-if exists("&colorcolumn")
-    set colorcolumn=80 " Color column 80 differently
-endif
+set colorcolumn=80
 
 if !&scrolloff
   set scrolloff=3
@@ -82,11 +79,6 @@ if exists('+undofile')
   set undofile
 endif
 
-" Allow color schemes to do bright colors without forcing bold.
-if &t_Co == 8 && $TERM !~# '^linux'
-  set t_Co=16
-endif
-
 if !exists('g:netrw_list_hide')
   let g:netrw_list_hide = '^\.,\~$,^tags$'
 endif
@@ -99,10 +91,10 @@ endif
 " Make Y consistent with C and D.  See :help Y.
 nnoremap Y y$
 
-"" Colorscheme
+" Colorscheme
 let base16colorspace=256  " Access colors present in 256 colorspace
 set background=dark
-colorscheme base16-solarized-dark
+colorscheme base16-3024
 
 "" Keybindings
 " Use <C-n> to clear the highlighting of :set hlsearch.
