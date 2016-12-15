@@ -14,7 +14,7 @@ output VIRTUAL1
 off
 output VGA1
 auto
-primary
 right-of LVDS1
 output LVDS1
 auto
+primary
