@@ -68,7 +68,7 @@ end
 # Only run path stuff if this is a login shell
 if status --is-login
   # Include environment variables from /etc/profile
-  env -i HOME=$HOME bash -l -c 'export -p' | sed -e "/PATH/s/'//g;/PATH/s/:/ /g;s/=/ /;s/^declare/set/" | source
+  #env -i HOME=$HOME bash -l -c 'export -p' | sed -e "/PATH/s/'//g;/PATH/s/:/ /g;s/=/ /;s/^declare/set/" | source
 
   prepend-path ~/bin
 
@@ -112,6 +112,9 @@ if status --is-interactive
   set -x CHROME_BIN chromium
 
   set -x JAVA_HOME /usr/lib/jvm/default
+
+  # Use Arch's steam-native-runtime package.
+  set -x STEAM_RUNTIME 0
 
   # Base16 Shell color scheme
   eval sh "$HOME/documents/dotfiles/base16-shell/scripts/base16-solarized-dark.sh"
