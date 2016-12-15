@@ -13,6 +13,7 @@
   pushnew = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
   lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(yellow)%an%d%Creset %s' --date=relative
   mdiff = difftool --dir-diff -t meld
+  please = push --force-with-lease
 [color]
 	ui = auto
 [commit]
