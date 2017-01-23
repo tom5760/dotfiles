@@ -1,30 +1,33 @@
 {
-    "editor.fontSize": 12,
-    "editor.wrappingColumn": -1,
-    "editor.lineNumbers": "off",
-    "editor.tabSize": 2,
-    "editor.renderWhitespace": "boundary",
-    "editor.renderLineHighlight": "all",
+  "editor.fontSize": 12,
+  "editor.wrappingColumn": -1,
+  "editor.lineNumbers": "off",
+  "editor.tabSize": 2,
+  "editor.renderWhitespace": "boundary",
+  "editor.renderLineHighlight": "all",
+  "editor.rulers": [80, 120],
 
-    "window.fullScreenZenMode": false,
-    "workbench.activityBar.visible": false,
-    "workbench.editor.showTabs": false,
+  "window.fullScreenZenMode": false,
+  "window.reopenFolders": "none",
 
-    "files.trimTrailingWhitespace": true,
-    "files.insertFinalNewline": true,
-    "files.exclude": {
-      "**/.git": true,
-      "**/.svn": true,
-      "**/.hg": true,
-      "**/.DS_Store": true,
-      "**/dist": true
-    },
+  "workbench.activityBar.visible": true,
+  "workbench.editor.showTabs": false,
 
-    "terminal.external.linuxExec": "uxterm",
-    "terminal.integrated.fontSize": 12,
+  "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
 
-    "telemetry.enableTelemetry": false,
-    "telemetry.enableCrashReporter": false,
+  "search.exclude": {
+    "**/node_modules": true,
+    "**/bower_components": true,
+    "**/dist": true
+  },
 
-    "vim.hlsearch": true
-  }
+  "terminal.external.linuxExec": "uxterm",
+  "terminal.integrated.fontSize": 12,
+
+  "telemetry.enableTelemetry": false,
+  "telemetry.enableCrashReporter": false,
+
+  "vim.hlsearch": true,
+  "vim.useSystemClipboard": true
+}

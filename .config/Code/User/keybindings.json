@@ -1,2 +1,6 @@
 // Place your key bindings in this file to overwrite the defaults
-[]
+[
+  { "key": "ctrl+n", "command": "" },
+  { "key": "ctrl+m", "command": "workbench.action.toggleActivityBarVisibility" },
+  { "key": "ctrl+b", "command": "workbench.action.toggleSidebarVisibility" }
+]
