@@ -7,11 +7,17 @@
   "editor.renderLineHighlight": "all",
   "editor.rulers": [80, 120],
 
-  "window.fullScreenZenMode": false,
   "window.reopenFolders": "none",
+  "window.menuBarVisibility": "toggle",
+  "window.zoomLevel": 0,
 
-  "workbench.activityBar.visible": true,
+  "zenMode.fullScreen": false,
+  "zenMode.hideTabs": true,
+  "zenMode.hideStatusBar": false,
+
+  "workbench.activityBar.visible": false,
   "workbench.editor.showTabs": false,
+  "workbench.welcome.enabled": true,
 
   "files.trimTrailingWhitespace": true,
   "files.insertFinalNewline": true,
