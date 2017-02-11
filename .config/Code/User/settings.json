@@ -1,26 +1,27 @@
 {
   "editor.fontSize": 12,
-  "editor.wrappingColumn": -1,
   "editor.lineNumbers": "off",
-  "editor.tabSize": 2,
-  "editor.renderWhitespace": "boundary",
   "editor.renderLineHighlight": "all",
+  "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120],
+  "editor.tabSize": 2,
+  "editor.wrappingColumn": -1,
 
-  "window.reopenFolders": "none",
   "window.menuBarVisibility": "toggle",
+  "window.reopenFolders": "none",
   "window.zoomLevel": 0,
 
   "zenMode.fullScreen": false,
-  "zenMode.hideTabs": true,
   "zenMode.hideStatusBar": false,
+  "zenMode.hideTabs": true,
 
-  "workbench.activityBar.visible": false,
+  "workbench.activityBar.visible": true,
   "workbench.editor.showTabs": false,
   "workbench.welcome.enabled": true,
 
-  "files.trimTrailingWhitespace": true,
+  "files.hotExit": "off",
   "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": true,
 
   "search.exclude": {
     "**/node_modules": true,
@@ -31,9 +32,11 @@
   "terminal.external.linuxExec": "uxterm",
   "terminal.integrated.fontSize": 12,
 
-  "telemetry.enableTelemetry": false,
   "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
 
   "vim.hlsearch": true,
-  "vim.useSystemClipboard": true
+  "vim.useSystemClipboard": false,
+
+  "go.toolsGopath": "/home/tom/programs/go"
 }
