@@ -1,6 +1,11 @@
 // Place your key bindings in this file to overwrite the defaults
 [
-  { "key": "ctrl+n", "command": "" },
-  { "key": "ctrl+m", "command": "workbench.action.toggleActivityBarVisibility" },
-  { "key": "ctrl+b", "command": "workbench.action.toggleSidebarVisibility" }
+  { "key": "ctrl+n",       "command": "" },
+  { "key": "ctrl+q",       "command": "" },
+  { "key": "ctrl+shift+q", "command": "workbench.action.quit" },
+  { "key": "ctrl+m",       "command": "workbench.action.toggleActivityBarVisibility" },
+  { "key": "ctrl+b",       "command": "workbench.action.toggleSidebarVisibility" },
+  { "key": "ctrl+o",       "command": "workbench.action.files.openFolder" },
+  { "key": "ctrl+alt+[",   "command": "workbench.action.navigateBack" },
+  { "key": "ctrl+alt+]",   "command": "workbench.action.navigateForward" }
 ]
