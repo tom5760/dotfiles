@@ -5,7 +5,6 @@
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120],
   "editor.tabSize": 2,
-  "editor.wrappingColumn": -1,
 
   "window.menuBarVisibility": "toggle",
   "window.reopenFolders": "none",
@@ -15,9 +14,9 @@
   "zenMode.hideStatusBar": false,
   "zenMode.hideTabs": true,
 
-  "workbench.activityBar.visible": true,
+  "workbench.activityBar.visible": false,
   "workbench.editor.showTabs": false,
-  "workbench.welcome.enabled": true,
+  "workbench.welcome.enabled": false,
 
   "files.hotExit": "off",
   "files.insertFinalNewline": true,
@@ -38,5 +37,10 @@
   "vim.hlsearch": true,
   "vim.useSystemClipboard": false,
 
-  "go.toolsGopath": "/home/tom/programs/go"
+  "go.toolsGopath": "/home/tom/programs/go",
+
+  "[markdown]": {
+    "editor.wordWrap": "off",
+    "editor.quickSuggestions": false
+  }
 }
