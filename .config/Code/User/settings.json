@@ -36,6 +36,16 @@
 
   "vim.hlsearch": true,
   "vim.useSystemClipboard": false,
+  "vim.otherModesKeyBindingsNonRecursive": [
+    {
+      "before": ["<C-u>"],
+      "after": ["2", "0", "k"]
+    },
+    {
+      "before": ["<C-d>"],
+      "after": ["2", "0", "j"]
+    }
+  ],
 
   "go.toolsGopath": "/home/tom/programs/go",
 
