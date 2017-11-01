@@ -11,6 +11,8 @@ FILES = [
     ('.config/cower/config',  ''),
     ('.config/autorandr',     ''),
     ('.config/fish',          ''),
+    ('.config/Code',          ''),
+    ('.config/nvim',          ''),
     ('.gitconfig',            ''),
     ('.hgrc',                 ''),
     ('.latexmkrc',            ''),
