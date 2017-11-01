@@ -9,12 +9,12 @@ off
 output HDMI2
 off
 output HDMI3
+auto
+output VGA1
 off
 output VIRTUAL1
 off
-output VGA1
-auto
-above LVDS1
+right-of LVDS1
 output LVDS1
 auto
 primary
