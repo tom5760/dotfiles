@@ -18,6 +18,8 @@
 #define base0E #6c71c4
 #define base0F #d33682
 
+xterm*termName: xterm-256color
+
 xterm*foreground:   base05
 xterm*background:   base00
 xterm*cursorColor:  base05
