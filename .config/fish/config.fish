@@ -108,16 +108,13 @@ end
 if status --is-interactive
   set -x PAGER less
   set -x EDITOR vim
-  set -x BROWSER chromium
-  set -x CHROME_BIN chromium
+  set -x BROWSER google-chrome-stable
+  set -x CHROME_BIN google-chrome-stable
 
   set -x JAVA_HOME /usr/lib/jvm/default
 
   # Use Arch's steam-native-runtime package.
   set -x STEAM_RUNTIME 0
-
-  # Base16 Shell color scheme
-  eval sh "$HOME/documents/dotfiles/base16-shell/scripts/base16-solarized-dark.sh"
 
   setup-keychain
 end

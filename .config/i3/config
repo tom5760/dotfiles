@@ -31,7 +31,8 @@ bar {
 }
 
 # start a terminal
-bindsym $mod+Return exec --no-startup-id uxterm
+#bindsym $mod+Return exec --no-startup-id uxterm
+bindsym $mod+Return exec --no-startup-id lxterminal
 
 # kill focused window
 bindsym $mod+Shift+q kill
