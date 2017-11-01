@@ -5,18 +5,20 @@
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120],
   "editor.tabSize": 2,
+  "editor.minimap.enabled": false,
 
   "window.menuBarVisibility": "toggle",
-  "window.reopenFolders": "none",
+  "window.restoreWindows": "none",
   "window.zoomLevel": 0,
 
   "zenMode.fullScreen": false,
   "zenMode.hideStatusBar": false,
   "zenMode.hideTabs": true,
 
-  "workbench.activityBar.visible": false,
+  "workbench.activityBar.visible": true,
+  "workbench.commandPalette.history": 4,
   "workbench.editor.showTabs": false,
-  "workbench.welcome.enabled": false,
+  "workbench.startupEditor": "none",
 
   "files.hotExit": "off",
   "files.insertFinalNewline": true,
@@ -35,22 +37,17 @@
   "telemetry.enableTelemetry": false,
 
   "vim.hlsearch": true,
-  "vim.useSystemClipboard": false,
-  "vim.otherModesKeyBindingsNonRecursive": [
-    {
-      "before": ["<C-u>"],
-      "after": ["2", "0", "k"]
-    },
-    {
-      "before": ["<C-d>"],
-      "after": ["2", "0", "j"]
-    }
-  ],
+  "vim.disableAnnoyingNeovimMessage": true,
+  "vim.otherModesKeyBindingsNonRecursive": [{
+    "before": ["<C-n>"],
+    "commands": [{ "command": ":nohl" } ]
+  }],
 
-  "go.toolsGopath": "/home/tom/programs/go",
+  "go.toolsGopath": "/home/tom/programs/go-tools",
 
   "[markdown]": {
     "editor.wordWrap": "off",
     "editor.quickSuggestions": false
-  }
+  },
+  "extensions.ignoreRecommendations": true
 }
