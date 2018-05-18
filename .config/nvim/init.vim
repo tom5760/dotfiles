@@ -5,6 +5,7 @@ set nowrap
 
 set ignorecase
 set smartcase
+set inccommand=nosplit
 
 set expandtab
 set tabstop=2
@@ -62,3 +63,6 @@ autocmd CompleteDone * silent! pclose!
 "" For nerdtree
 map <C-S-b> :NERDTreeToggle<CR>
 map <Leader>b :NERDTreeFind<CR>
+
+"" For vimwiki
+let g:vimwiki_list = [{'path': '~/documents/wiki/'}]
