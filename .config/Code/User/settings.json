@@ -1,53 +1,59 @@
 {
+  // Main Options
+
   "editor.fontSize": 12,
   "editor.lineNumbers": "off",
+  "editor.minimap.enabled": false,
   "editor.renderLineHighlight": "all",
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120],
   "editor.tabSize": 2,
-  "editor.minimap.enabled": false,
+
+  "extensions.ignoreRecommendations": true,
+
+  "files.hotExit": "off",
+  "files.insertFinalNewline": true,
+  "files.trimFinalNewlines": true,
+  "files.trimTrailingWhitespace": true,
+
+  "html.format.indentInnerHtml": true,
+  "html.format.wrapAttributes": "force-expand-multiline",
+  "html.format.wrapLineLength": 80,
+
+  "search.smartCase": true,
+
+  "telemetry.enableCrashReporter": false,
+  "telemetry.enableTelemetry": false,
+
+  "terminal.integrated.fontSize": 12,
 
   "window.menuBarVisibility": "toggle",
   "window.restoreWindows": "none",
   "window.zoomLevel": 0,
 
-  "zenMode.fullScreen": false,
-  "zenMode.hideStatusBar": false,
-  "zenMode.hideTabs": true,
-
   "workbench.activityBar.visible": true,
-  "workbench.commandPalette.history": 4,
   "workbench.editor.showTabs": false,
+  "workbench.list.multiSelectModifier": "alt",
   "workbench.startupEditor": "none",
+  "workbench.statusBar.feedback.visible": false,
 
-  "files.hotExit": "off",
-  "files.insertFinalNewline": true,
-  "files.trimTrailingWhitespace": true,
+  // Extension Options
 
-  "search.exclude": {
-    "**/node_modules": true,
-    "**/bower_components": true,
-    "**/dist": true
+  "go.toolsGopath": "~/programs/go-tools",
+
+  "vim.handleKeys": {
+    "<C-d>": true
   },
-
-  "terminal.external.linuxExec": "uxterm",
-  "terminal.integrated.fontSize": 12,
-
-  "telemetry.enableCrashReporter": false,
-  "telemetry.enableTelemetry": false,
-
   "vim.hlsearch": true,
-  "vim.disableAnnoyingNeovimMessage": true,
   "vim.otherModesKeyBindingsNonRecursive": [{
     "before": ["<C-n>"],
-    "commands": [{ "command": ":nohl" } ]
+    "commands": [{ "command": ":nohl" }]
   }],
 
-  "go.toolsGopath": "/home/tom/programs/go-tools",
+  // File Type-Specific Options
 
   "[markdown]": {
-    "editor.wordWrap": "off",
-    "editor.quickSuggestions": false
-  },
-  "extensions.ignoreRecommendations": true
+    "editor.quickSuggestions": false,
+    "editor.wordWrap": "off"
+  }
 }
