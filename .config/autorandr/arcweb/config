@@ -4,17 +4,17 @@ output DP2
 off
 output DP3
 off
-output HDMI1
-off
 output HDMI2
 off
 output HDMI3
-auto
-right-of LVDS1
+off
 output VGA1
 off
 output VIRTUAL1
 off
+output HDMI1
+auto
+above LVDS1
 output LVDS1
 auto
 primary
