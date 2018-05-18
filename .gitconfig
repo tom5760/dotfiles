@@ -3,12 +3,14 @@
 	email = tom5760@gmail.com
 [core]
 	editor = vim
+  pager =  /usr/share/git/diff-highlight/diff-highlight | less -rx1,5
 [merge]
   tool = meld
 [stash]
 	showPatch = true
 [push]
 	default = simple
+	followTags = true
 [alias]
   pushnew = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
   lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(yellow)%an%d%Creset %s' --date=relative
