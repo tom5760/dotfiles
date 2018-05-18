@@ -1,3 +1,3 @@
 function l -d 'Alias for ls'
-  ls -CF $argv
+  ls $argv
 end
