@@ -33,7 +33,7 @@ function fish_prompt --description 'Write out the prompt'
 
   # If our title bar function ran, don't need to repeat the user@hostname in
   # the prompt.
-  if set -q __fish_title
+  if set --query __fish_title; and [ -z "$SSH_CLIENT" ]
     printf '%s%s%s%s%s' "$__fish_prompt_cwd" "$pwd" "$__fish_prompt_normal" $user_prompt
   else
     printf '%s@%s %s%s%s%s%s' $USER $__fish_prompt_hostname "$__fish_prompt_cwd" "$pwd" "$__fish_prompt_normal" $user_prompt
