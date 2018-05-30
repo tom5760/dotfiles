@@ -1,4 +1,4 @@
-function ls -d 'Alias for ls'
+function ls --description='Alias for ls' --wraps=ls
   command ls -C \
     --color=auto \
     --classify \

@@ -1,7 +1,3 @@
-function vim -d 'Alias for nvim'
+function vim --description='Alias for nvim' --wraps=nvim
   nvim $argv
-end
-
-function vimdiff -d 'Alias for nvim'
-  nvim -d $argv
 end

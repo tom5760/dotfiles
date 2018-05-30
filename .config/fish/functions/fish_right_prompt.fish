@@ -1,6 +1,6 @@
 function fish_right_prompt -d 'Write out the right side prompt'
   # Save our status
-  set -l last_status $status
+  set --local last_status $status
 
   # Print out the exit status of the last command if it failed.
   if [ $last_status -ne 0 ]

@@ -1,3 +1,3 @@
-function l -d 'Alias for ls'
+function l --description='Alias for ls' --wraps=ls
   ls $argv
 end
