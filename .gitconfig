@@ -8,6 +8,9 @@
   tool = meld
 [stash]
 	showPatch = true
+[fetch]
+  prune = true
+  pruneTags = true
 [push]
 	default = simple
 	followTags = true
