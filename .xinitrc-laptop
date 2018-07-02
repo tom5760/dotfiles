@@ -21,21 +21,32 @@ xrdb -merge ~/.Xresources
 setxkbmap -option ctrl:nocaps
 
 # Screensaver
-xscreensaver -nosplash &
+# xscreensaver -nosplash &
 
 # f.lux
-xflux -z 19123
+#xflux -z 19123
 
 # For notifications
-dunst &
+#dunst &
 
 # Automount stuff
-usermount &
+#usermount &
 
 # NetworkManager
-nm-applet &
+#nm-applet &
+
+# Bluetooth Applet
+#blueman-applet &
 
 # PulseAudio
-start-pulseaudio-x11
+#start-pulseaudio-x11
+
+systemctl --user import-environment DISPLAY XAUTHORITY
+
+if command -v dbus-update-activation-environment >/dev/null 2>&1
+  dbus-update-activation-environment DISPLAY XAUTHORITY
+end
+
+systemctl --no-block --user start xsession.target
 
 exec i3
