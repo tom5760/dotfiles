@@ -14,10 +14,10 @@ function fish_right_prompt -d 'Write out the right side prompt'
   end
 
   # Print out our current git status if we are in a repository.
-  if git rev-parse ^ /dev/null
+  if git rev-parse 2> /dev/null
     echo (set_color --dim green)'('
 
-    if not git symbolic-ref --short HEAD
+    if not git symbolic-ref --short HEAD 2> /dev/null
       # If detached, print the short ref name.
       git rev-parse --short HEAD
     end
