@@ -1,6 +1,8 @@
 {
   // Main Options
 
+  "breadcrumbs.enabled": true,
+
   "editor.fontSize": 12,
   "editor.lineNumbers": "off",
   "editor.minimap.enabled": false,
@@ -8,6 +10,9 @@
   "editor.renderWhitespace": "boundary",
   "editor.rulers": [80, 120],
   "editor.tabSize": 2,
+
+  "explorer.confirmDelete": false,
+  "explorer.sortOrder": "type",
 
   "extensions.ignoreRecommendations": true,
 
@@ -31,7 +36,7 @@
   "window.restoreWindows": "none",
   "window.zoomLevel": 0,
 
-  "workbench.activityBar.visible": true,
+  "workbench.activityBar.visible": false,
   "workbench.editor.showTabs": false,
   "workbench.list.multiSelectModifier": "alt",
   "workbench.startupEditor": "none",
@@ -39,13 +44,27 @@
 
   // Extension Options
 
-  "go.toolsGopath": "~/programs/go-tools",
+  "javascript.preferences.importModuleSpecifier": "relative",
+  "javascript.preferences.quoteStyle": "single",
+
+  "typescript.preferences.importModuleSpecifier": "relative",
+  "typescript.preferences.quoteStyle": "single",
+
+  "go.enableCodeLens": {
+    "references": false,
+    "runtest": true
+  },
+  "go.gotoSymbol.includeGoroot": true,
+  "go.gotoSymbol.includeImports": true,
+  "go.gopath": "/home/tom/programs/go-tools",
+  "go.formatFlags": ["-s"],
+  "go.formatTool": "gofmt",
 
   "vim.handleKeys": {
     "<C-d>": true
   },
   "vim.hlsearch": true,
-  "vim.otherModesKeyBindingsNonRecursive": [{
+  "vim.normalModeKeyBindingsNonRecursive": [{
     "before": ["<C-n>"],
     "commands": [{ "command": ":nohl" }]
   }],
