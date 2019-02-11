@@ -15,8 +15,6 @@ off
 output VGA1
 auto
 above LVDS1
-rate 60.00
 output LVDS1
 auto
 primary
-rate 60.02
