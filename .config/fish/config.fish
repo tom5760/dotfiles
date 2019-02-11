@@ -12,8 +12,9 @@ if status --is-login
   append_path ~/programs/android-sdk/tools
   append_path ~/programs/android-sdk/platform-tools
   append_path ~/programs/android-studio/bin
-  append_path ~/programs/go/bin
-  append_path ~/programs/go-tools/bin
+  append_path ~/programs/go/root/bin
+  append_path ~/programs/go/tools/bin
+  append_path ~/programs/go/path/bin
   append_path ~/programs/npm/bin
 end
 
@@ -26,8 +27,8 @@ if status --is-interactive
   set --export --global JAVA_HOME /usr/lib/jvm/default
 
   export_dir ANDROID_HOME ~/programs/android-sdk
-  export_dir GOROOT ~/programs/go
-  export_dir GOPATH ~/programs/go-tools
+  export_dir GOROOT ~/programs/go/root
+  export_dir GOPATH ~/programs/go/path
 
   setup_keychain
 end
