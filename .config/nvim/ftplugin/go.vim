@@ -1,1 +1,3 @@
 setlocal noexpandtab
+
+packadd go

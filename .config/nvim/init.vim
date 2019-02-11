@@ -55,6 +55,7 @@ vmap > >gv
 let g:ctrlp_show_hidden = 1
 let g:ctrlp_switch_buffer = '0'
 let g:ctrlp_match_current_file = 1
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files --cached --others --exclude-standard']
 
 "" For nerdtree
 map <C-S-b> :NERDTreeToggle<CR>
@@ -62,3 +63,7 @@ map <Leader>b :NERDTreeFind<CR>
 
 "" For vimwiki
 let g:vimwiki_list = [{'path': '~/documents/wiki/'}]
+
+"" For vim-go
+let g:go_bin_path = "/home/tom/programs/go/tools"
+let g:go_fmt_command = "goimports"
