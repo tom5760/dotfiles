@@ -45,20 +45,16 @@ noremap <silent> <C-j> <C-w>j
 noremap <silent> <C-k> <C-w>k
 
 " CTRL+A jumps to beginning of line in command window
-cnoremap <C-A>     <Home>
+cnoremap <C-A> <Home>
 
 " Vmap for maintain Visual Mode after shifting > and <
 vmap < <gv
 vmap > >gv
 
 " For ctrlp
-let g:ctrlp_cmd = 'CtrlPBuffer'
+let g:ctrlp_show_hidden = 1
 let g:ctrlp_switch_buffer = '0'
 let g:ctrlp_match_current_file = 1
-
-"" For deoplete
-" Close the preview window when finished completion.
-autocmd CompleteDone * silent! pclose!
 
 "" For nerdtree
 map <C-S-b> :NERDTreeToggle<CR>
