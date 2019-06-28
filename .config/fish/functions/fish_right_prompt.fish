@@ -14,7 +14,9 @@ function fish_right_prompt -d 'Write out the right side prompt'
   end
 
   # Print out our current git status if we are in a repository.
-  if git rev-parse 2> /dev/null
+  set --local in_worktree (git rev-parse --is-inside-work-tree 2> /dev/null)
+
+  if test "$in_worktree" = "true"
     echo (set_color --dim green)'('
 
     if not git symbolic-ref --short HEAD 2> /dev/null
