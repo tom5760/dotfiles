@@ -22,9 +22,7 @@ end
 if status --is-interactive
   set --export --global PAGER less
   set --export --global EDITOR vim
-  set --export --global BROWSER google-chrome-stable
-  set --export --global CHROME_BIN google-chrome-stable
-  set --export --global JAVA_HOME /usr/lib/jvm/default
+  set --export --global BROWSER firefox
 
   export_dir ANDROID_HOME ~/programs/android-sdk
   export_dir GOROOT ~/programs/go/root
