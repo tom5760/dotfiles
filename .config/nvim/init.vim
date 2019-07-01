@@ -40,7 +40,12 @@ set list
 let &showbreak = '↪ '
 let &listchars = 'tab:⤑ ,trail:·,extends:⇉,precedes:⇇,nbsp:␣'
 
+set termguicolors
 colorscheme solarized8_high
+
+" https://github.com/lifepillar/vim-solarized8/issues/65
+hi SpellBad ctermfg=NONE guifg=NONE
+hi Whitespace guifg=#555555 guibg=NONE guisp=NONE
 
 " Close preview window automatically
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
