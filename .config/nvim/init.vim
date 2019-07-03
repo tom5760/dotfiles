@@ -3,11 +3,16 @@
 "" Plugins
 call plug#begin('~/.config/nvim/vim-plug')
 
-Plug 'junegunn/fzf.vim'
+Plug 'HerringtonDarkholme/yats.vim'
 Plug 'lifepillar/vim-solarized8'
+
+Plug 'junegunn/fzf.vim'
+
 Plug 'scrooloose/nerdcommenter'
 Plug 'scrooloose/nerdtree'
+
 Plug 'vimwiki/vimwiki'
+
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
 call plug#end()
@@ -43,9 +48,11 @@ let &listchars = 'tab:⤑ ,trail:·,extends:⇉,precedes:⇇,nbsp:␣'
 set termguicolors
 colorscheme solarized8_high
 
+" Some color overrides
 " https://github.com/lifepillar/vim-solarized8/issues/65
 hi SpellBad ctermfg=NONE guifg=NONE
 hi Whitespace guifg=#555555 guibg=NONE guisp=NONE
+hi PreProc guifg=#ffb090 guibg=NONE guisp=NONE gui=NONE cterm=NONE
 
 " Close preview window automatically
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
@@ -80,10 +87,10 @@ vnoremap <silent> > >gv
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
 function! GFilesFallback()
-  let output = system('git rev-parse --is-inside-work-tree') " Is there a faster way?
+  let output = system('git rev-parse --is-inside-work-tree')
   let prefix = get(g:, 'fzf_command_prefix', '')
   if v:shell_error == 0
-    exec "normal :" . prefix . "GFiles\<CR>"
+    exec "normal :" . prefix . "GFiles --cached --others --exclude-standard\<CR>"
   else
     exec "normal :" . prefix . "Files\<CR>"
   endif
@@ -95,6 +102,9 @@ nnoremap <silent> <C-p> :call GFilesFallback()<CR>
 " For NERDtree
 map <C-S-b> :NERDTreeToggle<CR>
 map <Leader>b :NERDTreeFind<CR>
+
+let NERDTreeShowHidden=1
+let NERDTreeMinimalUI=1
 
 " For NERDcommenter
 map <C-_> <plug>NERDCommenterToggle
