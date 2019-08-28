@@ -13,10 +13,11 @@ off
 output VIRTUAL1
 off
 output HDMI1
-auto
-above LVDS1
+mode 2560x1440_30.00
+pos 1366x0
 rate 60.00
 output LVDS1
-auto
+mode 1366x768
+pos 0x0
 primary
 rate 60.02
