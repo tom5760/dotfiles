@@ -3,7 +3,7 @@
 	email = tom5760@gmail.com
 [core]
 	editor = vim
-	pager =  /usr/share/git/diff-highlight/diff-highlight | less -rx1,5
+	pager = /usr/share/git/diff-highlight/diff-highlight | less -x2
 [merge]
 	tool = meld
 [stash]
