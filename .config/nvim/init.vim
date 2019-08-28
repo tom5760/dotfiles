@@ -15,6 +15,11 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
+Plug 'autozimu/LanguageClient-neovim', {
+    \ 'branch': 'next',
+    \ 'do': 'bash install.sh',
+    \ }
+
 call plug#end()
 
 "" General options
@@ -53,6 +58,7 @@ colorscheme solarized8_high
 hi SpellBad ctermfg=NONE guifg=NONE
 hi Whitespace guifg=#555555 guibg=NONE guisp=NONE
 hi PreProc guifg=#ffb090 guibg=NONE guisp=NONE gui=NONE cterm=NONE
+hi Special guifg=#f7956c guibg=NONE guisp=NONE gui=NONE cterm=NONE
 
 " Close preview window automatically
 autocmd InsertLeave,CompleteDone * if pumvisible() == 0 | silent! pclose | endif
@@ -83,6 +89,9 @@ vnoremap <silent> > >gv
 
 "" Plugin configuration
 
+" For neovim node support
+let g:node_host_prog = '/usr/bin/neovim-node-host'
+
 " FZF.vim
 let g:fzf_history_dir = '~/.local/share/fzf-history'
 
@@ -108,6 +117,7 @@ let NERDTreeMinimalUI=1
 
 " For NERDcommenter
 map <C-_> <plug>NERDCommenterToggle
+let NERDDefaultAlign="start"
 
 " For vimwiki
 let g:vimwiki_list = [{'path': '~/documents/wiki/'}]
@@ -119,3 +129,34 @@ let g:go_def_mode = 'gopls'
 let g:go_fmt_command = "goimports"
 let g:go_fmt_experimental = 1
 let g:go_term_mode = 1
+
+" For LanguageClient-neovim
+let g:LanguageClient_serverCommands = {
+\ 'typescript': ['/home/tom/programs/npm/bin/typescript-language-server', '--stdio']
+\ }
+
+function LC_maps()
+ if has_key(g:LanguageClient_serverCommands, &filetype)
+   nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
+   nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
+   nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
+   nnoremap <buffer> <silent> <F5> :call LanguageClient_contextMenu()<CR>
+   nnoremap <buffer> <silent> <A-.> :call LanguageClient#textDocument_codeAction()<CR>
+   set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
+   set signcolumn=yes
+ endif
+endfunction
+
+autocmd FileType * call LC_maps()
+
+"" Function to test key code
+"function! s:getchar() abort
+"  redraw | echo 'Press any key: '
+"  let c = getchar()
+"  while c ==# "\<CursorHold>"
+"    redraw | echo 'Press any key: '
+"    let c = getchar()
+"  endwhile
+"  redraw | echomsg printf('Raw: "%s" | Char: "%s"', c, nr2char(c))
+"endfunction
+"command! GetChar call s:getchar()
