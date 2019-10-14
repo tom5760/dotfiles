@@ -2,7 +2,7 @@
 	name = Tom Wambold
 	email = tom5760@gmail.com
 [core]
-	editor = vim
+	editor = nvim
 	pager = /usr/share/git/diff-highlight/diff-highlight | less -x2
 [merge]
 	tool = meld
