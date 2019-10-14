@@ -21,7 +21,8 @@ end
 # Only run this stuff if this is an interactive shell
 if status --is-interactive
   set --export --global PAGER less
-  set --export --global EDITOR vim
+  set --export --global MANPAGER 'nvim -c "set ft=man" -'
+  set --export --global EDITOR nvim
   set --export --global BROWSER firefox
 
   export_dir ANDROID_HOME ~/programs/android-sdk
