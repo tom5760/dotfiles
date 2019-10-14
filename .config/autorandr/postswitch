@@ -1,4 +1,4 @@
 #!/bin/sh
 
 # Reset background
-feh --bg-max ~/media/images/globe.jpg
+feh --bg-max ~/media/images/blue-marble-west.jpg
