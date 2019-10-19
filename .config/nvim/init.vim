@@ -47,6 +47,9 @@ set cursorcolumn
 set scrolloff=2
 set sidescrolloff=2
 
+set wildmode=longest:full,full
+set pumblend=20
+
 set list
 let &showbreak = '↪ '
 let &listchars = 'tab:⤑ ,trail:·,extends:⇉,precedes:⇇,nbsp:␣'
@@ -88,6 +91,20 @@ cnoremap <silent> <C-A> <Home>
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
+" Wayland Clipboard
+
+let g:clipboard = {
+  \  'name': 'wl-clipboard',
+  \  'copy': {
+  \    '+': 'wl-copy',
+  \    '*': 'wl-copy --primary',
+  \  },
+  \  'paste': {
+  \    '+': 'wl-paste',
+  \    '*': 'wl-paste --primary',
+  \  },
+  \}
+
 "" Plugin configuration
 
 " For neovim node support
@@ -125,11 +142,9 @@ let g:vimwiki_list = [{'path': '~/documents/wiki/'}]
 
 " For vim-go
 let g:go_bin_path = "/home/tom/programs/go/tools/bin"
-let g:go_info_mode = 'gopls'
-let g:go_def_mode = 'gopls'
 let g:go_fmt_command = "goimports"
 let g:go_fmt_experimental = 1
-let g:go_term_mode = 1
+let g:go_doc_popup_window = 1
 
 " For LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
