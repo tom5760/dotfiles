@@ -16,6 +16,18 @@ if status --is-login
   append_path ~/programs/go/tools/bin
   append_path ~/programs/go/path/bin
   append_path ~/programs/npm/bin
+
+  switch $XDG_SESSION_TYPE
+  case wayland
+    set --export --global MOZ_ENABLE_WAYLAND 1
+    set --export --global _JAVA_AWT_WM_NONREPARENTING 1
+    set --export --global CLUTTER_BACKEND wayland
+    set --export --global SDL_VIDEODRIVER wayland
+    set --export --global QT_STYLE_OVERRIDE adwaita-dark
+  case x11
+    set --export --global DE generic
+    set --export --global _JAVA_AWT_WM_NONREPARENTING 1
+  end
 end
 
 # Only run this stuff if this is an interactive shell
