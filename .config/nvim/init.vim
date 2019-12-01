@@ -13,7 +13,7 @@ Plug 'scrooloose/nerdtree'
 
 Plug 'vimwiki/vimwiki'
 
-Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'fatih/vim-go'
 
 Plug 'autozimu/LanguageClient-neovim', {
     \ 'branch': 'next',
@@ -141,7 +141,6 @@ let NERDDefaultAlign="start"
 let g:vimwiki_list = [{'path': '~/documents/wiki/'}]
 
 " For vim-go
-let g:go_bin_path = "/home/tom/programs/go/tools/bin"
 let g:go_fmt_command = "goimports"
 let g:go_fmt_experimental = 1
 let g:go_doc_popup_window = 1
