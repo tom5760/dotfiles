@@ -40,6 +40,9 @@ output * background /home/tom/media/images/blue-marble-west.jpg fit #000000
 output eDP-1 pos 0,0
 output 'Dell Inc. DELL U2719D 1MV0KS2' mode 2560x1440@59.951000Hz pos 1920,0 subpixel rgb
 
+#output eDP-1 scale 1.2
+#output 'Dell Inc. DELL U2719D 1MV0KS2' mode 2560x1440@59.951000Hz pos 1600,0 subpixel rgb
+
 ### Idle configuration
 #
 # Example configuration:
@@ -54,10 +57,11 @@ output 'Dell Inc. DELL U2719D 1MV0KS2' mode 2560x1440@59.951000Hz pos 1920,0 sub
 # your displays after another 300 seconds, and turn your screens back on when
 # resumed. It will also lock your screen before your computer goes to sleep.
 exec swayidle -w \
-  timeout 300 'swaylock --daemonize' \
+  timeout 300 'loginctl lock-session' \
   timeout 600 'swaymsg "output * dpms off"' \
   resume 'swaymsg "output * dpms on"' \
-  before-sleep 'swaylock --daemonize'
+  before-sleep 'swaylock --daemonize' \
+  lock 'swaylock --daemonize'
 
 exec light -N 1
 
@@ -112,20 +116,24 @@ titlebar_padding 1
     bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -b 'Yes, exit sway' 'swaymsg exit'
 
     # Lock screen
-    bindsym XF86ScreenSaver exec swaylock
-    bindsym $mod+Ctrl+Alt+l exec swaylock
+    bindsym XF86ScreenSaver exec loginctl lock-session
+    bindsym $mod+Ctrl+Alt+l exec loginctl lock-session
 
     # Volume
-    bindsym XF86AudioMute exec amixer set Master toggle && killall -USR1 i3status
-    bindsym XF86AudioLowerVolume exec amixer set Master 2%- && killall -USR1 i3status
-    bindsym XF86AudioRaiseVolume exec amixer set Master 2%+ && killall -USR1 i3status
+    bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle
+    bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+    bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
 
     # Microphone
-    bindsym XF86AudioMicMute exec amixer set Capture toggle
+    bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
     # Backlight
     bindsym XF86MonBrightnessDown exec light -U 10
     bindsym XF86MonBrightnessUp exec light -A 10
+
+    # Dismiss notifications
+    bindsym $mod+Ctrl+space exec makoctl dismiss
+    bindsym $mod+Ctrl+return exec makoctl invoke
 
 #
 # Moving around:
@@ -259,6 +267,8 @@ bindsym $mod+Ctrl+h resize shrink width 25px
 bindsym $mod+Ctrl+j resize grow height 25px
 bindsym $mod+Ctrl+k resize shrink height 25px
 bindsym $mod+Ctrl+l resize grow width 25px
+
+font Source Code Pro Regular 10
 
 #
 # Status Bar:
