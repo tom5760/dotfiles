@@ -145,6 +145,13 @@ let g:go_fmt_command = "goimports"
 let g:go_fmt_experimental = 1
 let g:go_doc_popup_window = 1
 
+" Use the current go module as the local module for goimports.
+autocmd FileType go let b:go_fmt_options = {
+  \   'goimports': '-local ' .
+  \   trim(system('cd '. shellescape(expand('%:h')) .'; and go list -m;')),
+  \ }
+
+
 " For LanguageClient-neovim
 let g:LanguageClient_serverCommands = {
 \ 'typescript': ['/home/tom/programs/npm/bin/typescript-language-server', '--stdio']
