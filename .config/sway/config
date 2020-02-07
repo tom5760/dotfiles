@@ -290,3 +290,8 @@ bar {
         inactive_workspace #32323200 #32323200 #5c5c5c
     }
 }
+
+# Per-window settings:
+
+# When firefox is fullscreen, don't show the screensaver.
+for_window [app_id="firefox"] inhibit_idle fullscreen
