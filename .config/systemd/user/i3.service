@@ -1,0 +1,12 @@
+[Unit]
+Description=i3wm
+Documentation=man:i3(1)
+BindsTo=graphical-session.target
+BindsTo=i3-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target
+
+[Service]
+Type=simple
+EnvironmentFile=-%h/.config/i3/env
+ExecStart=/usr/bin/i3

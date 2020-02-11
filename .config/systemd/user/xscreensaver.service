@@ -1,0 +1,8 @@
+[Unit]
+Description=XScreensaver daemon
+
+[Service]
+ExecStart=/usr/bin/xscreensaver -nosplash
+
+[Install]
+WantedBy=i3-session.target

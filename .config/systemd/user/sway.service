@@ -1,0 +1,12 @@
+[Unit]
+Description=sway - SirCmpwn's Wayland window manager
+Documentation=man:sway(5)
+BindsTo=graphical-session.target
+BindsTo=sway-session.target
+Wants=graphical-session-pre.target
+After=graphical-session-pre.target
+
+[Service]
+Type=simple
+EnvironmentFile=-%h/.config/sway/env
+ExecStart=/usr/bin/fish --login --command='/usr/bin/sway'

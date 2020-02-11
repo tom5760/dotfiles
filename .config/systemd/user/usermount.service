@@ -1,0 +1,8 @@
+[Unit]
+Description=Mount removable devices.
+
+[Service]
+ExecStart=/usr/bin/usermount
+
+[Install]
+WantedBy=default.target
