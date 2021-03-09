@@ -20,7 +20,9 @@ set $term gnome-terminal
 set $menu bemenu-run \
   --prompt 'Run:' \
   --ignorecase \
-  --fn 'Source Code Pro Regular 12' \
+  --monitor all \
+  --line-height 28 \
+  --fn 'Source Code Pro Regular 10' \
   --fb '#323232' --ff '#f6f6f6' \
   --tb '#323232' --tf '#f6f6f6' \
   --nb '#000000' --nf '#595959' \
@@ -39,6 +41,7 @@ output * background /home/tom/media/images/blue-marble-west.jpg fit #000000
 
 output eDP-1 pos 0,0
 output 'Dell Inc. DELL U2719D 1MV0KS2' mode 2560x1440@59.951000Hz pos 1920,0 subpixel rgb
+#output 'Goldstar Company Ltd LG TV 0x00000101' mode 1920x1080@60Hz pos -960,-1080
 
 #output eDP-1 scale 1.2
 #output 'Dell Inc. DELL U2719D 1MV0KS2' mode 2560x1440@59.951000Hz pos 1600,0 subpixel rgb
@@ -65,7 +68,7 @@ exec swayidle -w \
 
 exec light -N 1
 
-exec "systemctl --user import-environment; systemctl --user start sway-session.target"
+#exec "systemctl --user import-environment; systemctl --user start sway-session.target"
 
 exec "/usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1"
 
@@ -87,6 +90,7 @@ input type:keyboard {
 }
 
 smart_borders on
+hide_edge_borders both
 titlebar_padding 1
 
 ### Key bindings
@@ -101,6 +105,9 @@ titlebar_padding 1
 
     # Start your launcher
     bindsym $mod+p exec $menu
+
+    # Gateway password script
+    bindsym $mod+o exec gwpw
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -287,7 +294,7 @@ bar {
     colors {
         statusline #ffffff
         background #323232
-        inactive_workspace #32323200 #32323200 #5c5c5c
+        inactive_workspace #000000 #000000 #5c5c5c
     }
 }
 
@@ -295,3 +302,11 @@ bar {
 
 # When firefox is fullscreen, don't show the screensaver.
 for_window [app_id="firefox"] inhibit_idle fullscreen
+# When chrome is fullscreen, don't show the screensaver.
+for_window [class="Chromium"] inhibit_idle fullscreen
+for_window [class="zoom"] inhibit_idle visible
+
+
+no_focus [title="Microsoft Teams Notification"]
+for_window [title="Microsoft Teams Notification"] move absolute position 20 px 20 px
+for_window [title="Microsoft Teams Notification"] sticky enable
