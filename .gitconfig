@@ -28,3 +28,7 @@
 [log]
 	date = human
 	follow = true
+[pull]
+	ff = only
+[init]
+	defaultBranch = main
