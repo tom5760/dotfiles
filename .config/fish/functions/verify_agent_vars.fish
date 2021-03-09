@@ -7,7 +7,7 @@ function verify_agent_vars --description 'Check if ssh-agent is running'
     return 1
   end
 
-  ssh-add -l > /dev/null ^&1
+  ssh-add -l > /dev/null 2>&1
 
   if [ $status -eq 2 ]
     return 1
