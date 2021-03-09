@@ -15,11 +15,6 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'fatih/vim-go'
 
-Plug 'autozimu/LanguageClient-neovim', {
-    \ 'branch': 'next',
-    \ 'do': 'bash install.sh',
-    \ }
-
 call plug#end()
 
 "" General options
@@ -53,6 +48,9 @@ set pumblend=20
 set list
 let &showbreak = '↪ '
 let &listchars = 'tab:⤑ ,trail:·,extends:⇉,precedes:⇇,nbsp:␣'
+
+let $PAGER=''
+let $MANPAGER=''
 
 set termguicolors
 colorscheme solarized8_high
@@ -139,10 +137,10 @@ let NERDDefaultAlign="start"
 
 " For vimwiki
 let g:vimwiki_list = [{'path': '~/documents/wiki/'}]
+let g:vimwiki_create_link = 0
 
 " For vim-go
 let g:go_fmt_command = "goimports"
-let g:go_fmt_experimental = 1
 let g:go_doc_popup_window = 1
 
 " Use the current go module as the local module for goimports.
