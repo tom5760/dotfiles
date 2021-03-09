@@ -33,9 +33,12 @@ end
 # Only run this stuff if this is an interactive shell
 if status --is-interactive
   set --export --global PAGER less
-  set --export --global MANPAGER 'nvim -c "set ft=man" -'
+#  set --export --global MANPAGER '/bin/sh -c "unset PAGER; nvim -c "set ft=man" -'
   set --export --global EDITOR nvim
   set --export --global BROWSER firefox
+  set --export --global MANPAGER "/bin/sh -c \"unset PAGER;unset MANPAGER;col -b -x | \
+    nvim -R -c 'set ft=man nomod nolist' -c 'map q :q<CR>' \
+    -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' -\""
 
   export_dir ANDROID_HOME ~/programs/android-sdk
   export_dir GOROOT ~/programs/go/root
