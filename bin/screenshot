@@ -1,0 +1,43 @@
+#!/bin/sh
+# Install slurp: https://github.com/naelstrof/slurp
+#     pacman -S slurp
+# Run this like: ./screenshot [-d] [file]
+#  -d Include window decorations
+
+SCREENSHOT_DIR="$HOME/media/screenshots"
+
+if ! which slurp 2>&1 > /dev/null
+then
+  echo "slurp not installed"
+  exit 1
+fi
+
+FILTER="\(.rect.x + .window_rect.x),\(.rect.y + .window_rect.y) \(.window_rect.width)x\(.window_rect.height)"
+
+if [ "$1" = "-d" ]
+then
+  FILTER="\(.rect.x),\(.rect.y - .deco_rect.height) \(.rect.width)x\(.rect.height + .deco_rect.height)"
+  shift
+fi
+
+# Returns a list of open windows for slurp
+get_windows() {
+  swaymsg --type get_tree | jq --raw-output "
+    [recurse(.nodes[]) | (.nodes[], .floating_nodes[])] |
+    map(select((.type == \"con\" or .type == \"floating_con\") and .visible)) |
+    .[] |
+    \"$FILTER\""
+}
+
+mkdir -p "$SCREENSHOT_DIR"
+
+FILENAME="$SCREENSHOT_DIR/$(date -u '+%Y%m%d_%H%M%S')_screenshot.png"
+
+if SELECTION=$(get_windows | slurp)
+then
+  echo "$SELECTION" | grim -c -g - -
+else
+  grim -c -
+fi | tee "$FILENAME" | wl-copy --type 'image/png'
+
+echo "$FILENAME"

@@ -1,0 +1,50 @@
+#!/bin/sh
+# Install slop: https://github.com/naelstrof/slop
+#     pacman -S slop
+# Run this like: ./record_screen moviename
+
+if ! which slop 2>&1 > /dev/null
+then
+  echo "slop not installed"
+  exit 1
+fi
+
+if [ -z "$1" ]
+then
+  echo "provide output name"
+  exit 1
+fi
+
+eval $(slop --nodecorations --format="W=%w; H=%h; X=%x; Y=%y;")
+
+if [ -z "$W" -o -z "$H" -o -z "$X" -o -z "Y" ]
+then
+  exit 0
+fi
+
+echo $W $H $X $Y
+
+# Record just the screen
+exec ffmpeg \
+  -f x11grab \
+  -show_region 1 \
+  -framerate 60 \
+  -video_size "${W}x${H}" \
+  -draw_mouse 1 \
+  -i ":0.0+$X,$Y" \
+  -filter:v "crop=iw-mod(iw\,2):ih-mod(ih\,2)" \
+  -codec:v libx264 \
+  -preset:v fast \
+  -profile:v baseline \
+  -pix_fmt yuv420p \
+  -r 60 \
+  $1
+
+# Record the screen and audio output
+#cmd="ffmpeg \
+#  -f x11grab \
+#  -s ${W}x${H} \
+#  -i :0.0+${X},${Y} \
+#  -f pulse \
+#  -i bluez_sink.00_16_94_28_73_FC.a2dp_sink.monitor \
+#  $1"

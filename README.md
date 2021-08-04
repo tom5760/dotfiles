@@ -1,1 +1,1 @@
-Miscellaneous configuration files.
+Miscellaneous configuration files and scripts.

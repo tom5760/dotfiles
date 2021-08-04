@@ -1,0 +1,43 @@
+#!/bin/sh
+
+copy() {
+  case "$XDG_SESSION_TYPE" in
+    x11)
+      xclip -i -selection clipboard < "$DRAFT"
+      ;;
+    wayland)
+      wl-copy --type 'text/plain' < "$DRAFT"
+      ;;
+  esac
+}
+
+paste() {
+  case "$XDG_SESSION_TYPE" in
+    x11)
+      xclip -o -selection clipboard >> "$DRAFT"
+      ;;
+    wayland)
+      wl-paste --type 'text/plain' | dos2unix >> "$DRAFT"
+      ;;
+  esac
+}
+
+DRAFT_DIR="$HOME/.drafts"
+
+mkdir -p "$DRAFT_DIR"
+
+DRAFT=$(mktemp --tmpdir="$DRAFT_DIR")
+
+paste
+
+nvim -c "set ft=mail" -c "set spell" "$DRAFT"
+
+copy
+
+echo "Delete draft? [y/N]"
+read INPUT
+
+if [ "$INPUT" = "y" ]
+then
+    rm "$DRAFT"
+fi

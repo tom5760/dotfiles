@@ -1,0 +1,8 @@
+#!/bin/sh
+# Simple shortcut to run chrome with a different profile directory.
+
+#OPTS+="--ignore-certificate-errors "
+#OPTS+="--disable-web-security "
+
+exec chromium --user-data-dir=$HOME/programs/dev-chromium $OPTS $@
+#exec google-chrome-stable --user-data-dir=$HOME/programs/dev-chrome $OPTS $@

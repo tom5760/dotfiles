@@ -1,0 +1,21 @@
+#!/bin/sh
+# swapws - Swaps workspaces in sway.
+# Arguments are pairs of workspaces to swap.  Can specify arbitrary number.
+
+swap() {
+  swaymsg "rename workspace $1 to tmp"
+  swaymsg "rename workspace $2 to $1"
+  swaymsg "rename workspace tmp to $2"
+}
+
+if [ $# -lt 2 ]
+then
+  echo "USAGE: $0 <A> <B> [<A> <B> [...]]"
+  exit 1
+fi
+
+while [ $# -gt 0 ]
+do
+  swap $1 $2
+  shift 2
+done

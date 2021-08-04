@@ -1,0 +1,26 @@
+#!/bin/sh
+# soma.fm - Simple script to bookmark the radio streams I listen to.
+
+case $1 in
+    groovesalad)
+        exec mplayer http://voxsc1.somafm.com:3000
+        ;;
+    spacestation)
+        exec mplayer http://voxsc1.somafm.com:8200
+        ;;
+    tags)
+        exec mplayer http://205.188.215.230:8012
+        ;;
+    beat)
+        exec mplayer http://voxsc1.somafm.com:8384
+        ;;
+    cliq)
+        exec mplayer http://voxsc1.somafm.com:8062
+        ;;
+    whyy)
+        exec mplayer http://207.245.67.204:80
+        ;;
+    *)
+        echo 'unknown station'
+        ;;
+esac

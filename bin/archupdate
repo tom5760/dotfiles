@@ -1,0 +1,49 @@
+#!/bin/sh
+# Script to update archlinux system.
+
+update_aur() {
+  echo "AUR updates:"
+
+  auracle sync
+
+  mkdir -p ~/downloads/packages
+
+  pushd ~/downloads/packages
+  auracle clone $(auracle sync | cut -d' ' -f1)
+  popd
+}
+
+if [ "$(whoami)" != "root" ]
+then
+  sudo $0
+
+  update_aur
+
+  echo
+  echo "Firmware updates:"
+  fwupdmgr refresh
+  fwupdmgr get-updates
+
+  echo
+  echo "Configs to merge:"
+  locate "*.pacsave"
+  locate "*.pacnew"
+
+  exit 0
+fi
+
+echo "pacman -Syu"
+pacman -Syu
+echo
+
+echo "pkgfile -u"
+pkgfile -u
+echo
+
+echo "pacman -Scc"
+pacman -Scc
+echo
+
+echo "updatedb"
+updatedb
+echo

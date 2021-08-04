@@ -1,0 +1,80 @@
+#!/usr/bin/env fish
+#
+# Toggle blocking of various sites in /etc/hosts
+#
+
+set HOSTS \
+  reddit.com \
+  www.reddit.com \
+  facebook.com \
+  www.facebook.com \
+  news.ycombinator.com
+
+set HOSTFILE /etc/hosts
+
+function is_enabled
+  for host in $HOSTS
+    if not is_host_enabled $host
+      return 1
+    end
+  end
+end
+
+function enable
+  for host in $HOSTS
+    enable_host $host
+  end
+end
+
+function disable
+  for host in $HOSTS
+    disable_host $host
+  end
+end
+
+function enable_host --argument-names host
+  if is_host_enabled $host
+    return 0
+  end
+
+  if is_host_commented $host
+    uncomment_host $host
+    return 0
+  end
+
+  add_host $host
+end
+
+function disable_host --argument-names host
+  if is_host_enabled $host
+    comment_host $host
+  end
+end
+
+function is_host_enabled --argument-names host
+  grep --quiet "^127.0.0.1 $host" $HOSTFILE
+end
+
+function is_host_commented --argument-names host
+  grep --quiet "^# 127.0.0.1 $host" $HOSTFILE
+end
+
+function comment_host --argument-names host
+  sudo sed --in-place "s/127.0.0.1 $host/# 127.0.0.1 $host/" $HOSTFILE
+end
+
+function uncomment_host --argument-names host
+  sudo sed --in-place "s/# 127.0.0.1 $host/127.0.0.1 $host/" $HOSTFILE
+end
+
+function add_host --argument-names host
+  echo "127.0.0.1 $host" | sudo tee --append $HOSTFILE
+end
+
+if not is_enabled
+  echo 'Blocking sites...'
+  enable
+else
+  echo 'Unblocking sites...'
+  disable
+end
