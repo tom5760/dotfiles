@@ -6,7 +6,7 @@ if status --is-login
   # Reset our paths
   set --erase fish_user_paths
 
-  prepend_path ~/code/scripts
+  prepend_path ~/documents/dotfiles/bin
   prepend_path ~/bin
 
   append_path ~/programs/android-sdk/tools
