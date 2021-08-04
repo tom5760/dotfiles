@@ -1,8 +1,0 @@
-[Unit]
-Description=Network Manager Applet
-
-[Service]
-ExecStart=/usr/bin/nm-applet
-
-[Install]
-WantedBy=i3-session.target
