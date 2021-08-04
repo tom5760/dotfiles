@@ -15,12 +15,13 @@ Plug 'vimwiki/vimwiki'
 
 Plug 'fatih/vim-go'
 
+Plug 'godlygeek/tabular'
+
 call plug#end()
 
 "" General options
 
 set hidden
-set lazyredraw
 set mouse=a
 set nowrap
 set undofile
@@ -34,6 +35,7 @@ set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set textwidth=79
+set formatoptions=jcrqlo
 
 set colorcolumn=80,120
 set cursorline
@@ -89,24 +91,7 @@ cnoremap <silent> <C-A> <Home>
 vnoremap <silent> < <gv
 vnoremap <silent> > >gv
 
-" Wayland Clipboard
-
-let g:clipboard = {
-  \  'name': 'wl-clipboard',
-  \  'copy': {
-  \    '+': 'wl-copy',
-  \    '*': 'wl-copy --primary',
-  \  },
-  \  'paste': {
-  \    '+': 'wl-paste',
-  \    '*': 'wl-paste --primary',
-  \  },
-  \}
-
 "" Plugin configuration
-
-" For neovim node support
-let g:node_host_prog = '/usr/bin/neovim-node-host'
 
 " FZF.vim
 let g:fzf_history_dir = '~/.local/share/fzf-history'
@@ -125,7 +110,7 @@ endfunction
 nnoremap <silent> <C-p> :call GFilesFallback()<CR>
 
 " For NERDtree
-map <C-S-b> :NERDTreeToggle<CR>
+map <C-b> :NERDTreeToggle<CR>
 map <Leader>b :NERDTreeFind<CR>
 
 let NERDTreeShowHidden=1
@@ -136,8 +121,15 @@ map <C-_> <plug>NERDCommenterToggle
 let NERDDefaultAlign="start"
 
 " For vimwiki
-let g:vimwiki_list = [{'path': '~/documents/wiki/'}]
-let g:vimwiki_create_link = 0
+let g:vimwiki_list = [{
+      \ 'path': '~/documents/notes/',
+      \ 'syntax': 'markdown',
+      \ 'ext': '.md',
+      \ 'diary_rel_path': 'journal/',
+      \ 'diary_header': 'Journal',
+      \ 'diary_index': 'index',
+      \ 'auto_diary_index': 1 
+      \ }]
 
 " For vim-go
 let g:go_fmt_command = "goimports"
@@ -148,35 +140,3 @@ autocmd FileType go let b:go_fmt_options = {
   \   'goimports': '-local ' .
   \   trim(system('cd '. shellescape(expand('%:h')) .'; and go list -m;')),
   \ }
-
-
-" For LanguageClient-neovim
-let g:LanguageClient_serverCommands = {
-\ 'typescript': ['/home/tom/programs/npm/bin/typescript-language-server', '--stdio']
-\ }
-
-function LC_maps()
- if has_key(g:LanguageClient_serverCommands, &filetype)
-   nnoremap <buffer> <silent> K :call LanguageClient#textDocument_hover()<CR>
-   nnoremap <buffer> <silent> gd :call LanguageClient#textDocument_definition()<CR>
-   nnoremap <buffer> <silent> <F2> :call LanguageClient#textDocument_rename()<CR>
-   nnoremap <buffer> <silent> <F5> :call LanguageClient_contextMenu()<CR>
-   nnoremap <buffer> <silent> <A-.> :call LanguageClient#textDocument_codeAction()<CR>
-   set formatexpr=LanguageClient#textDocument_rangeFormatting_sync()
-   set signcolumn=yes
- endif
-endfunction
-
-autocmd FileType * call LC_maps()
-
-"" Function to test key code
-"function! s:getchar() abort
-"  redraw | echo 'Press any key: '
-"  let c = getchar()
-"  while c ==# "\<CursorHold>"
-"    redraw | echo 'Press any key: '
-"    let c = getchar()
-"  endwhile
-"  redraw | echomsg printf('Raw: "%s" | Char: "%s"', c, nr2char(c))
-"endfunction
-"command! GetChar call s:getchar()
