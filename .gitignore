@@ -1,5 +1,1 @@
-/.vim/.netrwhist
-/.zsh/*.zwc
-/.zsh/*.old
-/.zsh/.zsh_history
-/.zsh/.zcache/
+/.config/nvim/autoload/plug.vim.old
