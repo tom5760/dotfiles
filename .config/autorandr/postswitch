@@ -1,4 +1,0 @@
-#!/bin/sh
-
-# Reset background
-feh --bg-max ~/media/images/blue-marble-west.jpg
