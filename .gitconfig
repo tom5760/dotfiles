@@ -6,21 +6,20 @@
 	pager = /usr/share/git/diff-highlight/diff-highlight | less -x2
 [merge]
 	tool = meld
+	conflictstyle = diff3
 [stash]
 	showPatch = true
 [fetch]
 	prune = true
 	pruneTags = true
 [push]
-	default = simple
 	followTags = true
 [alias]
 	pushnew = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
 	lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(yellow)%an%d%Creset %s' --date=relative
 	mdiff = difftool --dir-diff -t meld
 	please = push --force-with-lease
-[color]
-	ui = auto
+	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 [commit]
 	verbose = true
 [rebase]
