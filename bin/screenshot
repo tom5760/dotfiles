@@ -38,6 +38,6 @@ then
   echo "$SELECTION" | grim -c -g - -
 else
   grim -c -
-fi | tee "$FILENAME" | wl-copy --type 'image/png'
+fi | swappy --file - --output-file - | tee "$FILENAME" | wl-copy --type 'image/png'
 
 echo "$FILENAME"
