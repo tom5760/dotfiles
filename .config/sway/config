@@ -16,12 +16,37 @@ set {
     --prompt 'Run:' \
     --ignorecase \
     --monitor all \
+    --no-exec \
     --line-height 28 \
     --fn 'Source Code Pro Regular 10' \
     --fb '#323232' --ff '#f6f6f6' \
     --tb '#323232' --tf '#f6f6f6' \
     --nb '#000000' --nf '#595959' \
-    --hb '#285577' --hf '#f5f7f9'
+    --hb '#285577' --hf '#f5f7f9' \
+    | xargs swaymsg exec --
+}
+
+exec {
+  #  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+  #
+
+  swayidle -w \
+    timeout 300 'loginctl lock-session' \
+    idlehint 600 \
+    before-sleep 'swaylock --daemonize' \
+    lock 'swaylock --daemonize'
+
+  # Backlight control
+  light -N 1
+
+  # Color temperature
+  gammastep
+
+  # For gnome-keyring
+  /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
+  # Trigger other user-services to start
+  systemctl --user start sway-session.target
 }
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
@@ -30,23 +55,6 @@ output {
 
   # Make sure laptop screen is on the left.
   eDP-1 pos 0,0
-}
-
-exec {
-  #  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-  swayidle -w \
-    timeout 300 'loginctl lock-session' \
-    before-sleep 'swaylock --daemonize' \
-    lock 'swaylock --daemonize'
-
-  # Backlight control
-  light -N 1
-
-  # For gnome-keyring
-  /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-
-  # Trigger other user-services to start
-  systemctl --user start sway-session.target
 }
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
