@@ -17,7 +17,7 @@ paste() {
       xclip -o -selection clipboard >> "$DRAFT"
       ;;
     wayland)
-      wl-paste --type 'text/plain' | dos2unix >> "$DRAFT"
+      wl-paste --type 'UTF8_STRING' | dos2unix >> "$DRAFT"
       ;;
   esac
 }
@@ -30,7 +30,10 @@ DRAFT=$(mktemp --tmpdir="$DRAFT_DIR")
 
 paste
 
-nvim -c "set ft=mail" -c "set spell" "$DRAFT"
+nvim \
+  -c "set ft=mail" \
+  -c "set spell" \
+  "$DRAFT"
 
 copy
 
