@@ -52,9 +52,6 @@ exec {
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output {
   * background /home/tom/media/images/blue-marble-west.jpg fit #000000
-
-  # Make sure laptop screen is on the left.
-  eDP-1 pos 0,0
 }
 
 # You can get the names of your inputs by running: swaymsg -t get_inputs
@@ -108,6 +105,11 @@ bindsym {
 
   # Microphone
   XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
+  # Player controls
+  XF86AudioPlay exec playerctl play-pause
+  XF86AudioNext exec playerctl next
+  XF86AudioPrev exec playerctl previous
 
   # Backlight
   XF86MonBrightnessDown exec light -U 10
@@ -207,6 +209,12 @@ bindsym {
 
   # Move focus to the parent container
   $mod+a focus parent
+
+  # Resize containers.
+  $mod+Ctrl+h resize shrink width 25px
+  $mod+Ctrl+j resize grow height 25px
+  $mod+Ctrl+k resize shrink height 25px
+  $mod+Ctrl+l resize grow width 25px
 }
 
 # Read `man 5 sway-bar` for more information about this section.
@@ -226,10 +234,9 @@ bar {
 }
 
 for_window {
-  # When some apps are fullscreen, inhibit the screensaver.
-  [app_id="firefox"]       inhibit_idle fullscreen
-  [app_id="Chromium"]      inhibit_idle fullscreen
-  [app_id="Google-chrome"] inhibit_idle fullscreen
+  # When any window is fullscreen, don't go to sleep.
+  [class=".*"]  inhibit_idle fullscreen
+  [app_id=".*"] inhibit_idle fullscreen
 
   # Inhibit the screensaver when Zoom is runnning.
   [class="zoom"] inhibit_idle visible
