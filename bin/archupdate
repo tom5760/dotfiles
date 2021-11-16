@@ -19,6 +19,10 @@ then
 
   update_aur
 
+  echo "flatpak update"
+  flatpak update
+  echo
+
   echo
   echo "Firmware updates:"
   fwupdmgr refresh
