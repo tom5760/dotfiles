@@ -31,3 +31,7 @@
 	ff = only
 [init]
 	defaultBranch = main
+[help]
+	autoCorrect = prompt
+[includeIf "gitdir:machineq/"]
+  path = ~/.config/git/mq.config
