@@ -12,6 +12,7 @@ if status --is-login
   fish_add_path --append ~/programs/go/root/bin
   fish_add_path --append ~/programs/go/path/bin
   fish_add_path --append ~/programs/npm/bin
+  fish_add_path --append ~/programs/google-cloud-sdk/bin
 end
 
 # Only run this stuff if this is an interactive shell
