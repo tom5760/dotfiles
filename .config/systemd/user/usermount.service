@@ -1,8 +1,9 @@
 [Unit]
 Description=Mount removable devices.
+PartOf=graphical-session.target
 
 [Service]
 ExecStart=/usr/bin/usermount
 
 [Install]
-WantedBy=default.target
+WantedBy=sway-session.target
