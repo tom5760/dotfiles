@@ -1,8 +1,4 @@
 function verify_agent_vars --description 'Check if ssh-agent is running'
-  if [ -z "$SSH_AGENT_PID" -o ! -O /proc/"$SSH_AGENT_PID" ]
-    return 1
-  end
-
   if [ -z "$SSH_AUTH_SOCK" -o ! -O "$SSH_AUTH_SOCK" -o ! -S "$SSH_AUTH_SOCK" ]
     return 1
   end
