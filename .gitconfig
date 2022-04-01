@@ -1,12 +1,13 @@
 [user]
 	name = Tom Wambold
 	email = tom5760@gmail.com
+	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICcHtK5cvZL1pDR+0IxYzPebauNQneYx9uzTdbWGsRP1
 [core]
 	editor = nvim
 	pager = /usr/share/git/diff-highlight/diff-highlight | less -x2
 [merge]
 	tool = meld
-	conflictstyle = diff3
+	conflictstyle = zdiff3
 [stash]
 	showPatch = true
 [fetch]
@@ -22,6 +23,7 @@
 	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
 [commit]
 	verbose = true
+	gpgsign = true
 [rebase]
 	autosquash = true
 [log]
@@ -33,5 +35,13 @@
 	defaultBranch = main
 [help]
 	autoCorrect = prompt
+[diff]
+	algorithm = histogram
 [includeIf "gitdir:machineq/"]
   path = ~/.config/git/mq.config
+[gpg]
+	format = ssh
+[tag]
+	gpgsign = true
+[gpg "ssh"]
+	allowedSignersFile = /home/tom/.config/git/allowed_signers
