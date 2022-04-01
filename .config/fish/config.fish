@@ -33,8 +33,14 @@ if status --is-interactive
 
   set --export --global XDG_DATA_DIRS "$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 
+  set --export --global DEBUGINFOD_URLS "https://debuginfod.archlinux.org/"
+
   export_dir GOROOT ~/programs/go/root
   export_dir GOPATH ~/programs/go/path
 
-  setup_keychain
+  if [ -S ~/.1password/agent.sock ]
+    set --export --universal SSH_AUTH_SOCK ~/.1password/agent.sock
+  else
+    setup_keychain
+  end
 end
