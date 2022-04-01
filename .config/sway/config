@@ -27,23 +27,14 @@ set {
 }
 
 exec {
-  #  timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
-  #
+  systemctl --user import-environment \
+    DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
-  swayidle -w \
-    timeout 300 'loginctl lock-session' \
-    idlehint 600 \
-    before-sleep 'swaylock --daemonize' \
-    lock 'swaylock --daemonize'
+  dbus-update-activation-environment --systemd \
+    DISPLAY WAYLAND_DISPLAY SWAYSOCK XDG_CURRENT_DESKTOP
 
   # Backlight control
   light -N 1
-
-  # Color temperature
-  gammastep
-
-  # For gnome-keyring
-  /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
   # Trigger other user-services to start
   systemctl --user start sway-session.target
@@ -57,7 +48,7 @@ output {
 # You can get the names of your inputs by running: swaymsg -t get_inputs
 # Read `man 5 sway-input` for more information about this section.
 input type:keyboard {
-    xkb_options ctrl:nocaps
+  xkb_options ctrl:nocaps
 }
 
 font Source Code Pro Regular 10
@@ -99,17 +90,17 @@ bindsym {
   $mod+Ctrl+Alt+l exec loginctl lock-session
 
   # Volume
-  XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
-  XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
-  XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
+  --locked XF86AudioMute        exec pactl set-sink-mute   @DEFAULT_SINK@ toggle
+  --locked XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2%
+  --locked XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2%
 
   # Microphone
-  XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+  --locked XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
   # Player controls
-  XF86AudioPlay exec playerctl play-pause
-  XF86AudioNext exec playerctl next
-  XF86AudioPrev exec playerctl previous
+  --locked XF86AudioPlay exec playerctl play-pause
+  --locked XF86AudioNext exec playerctl next
+  --locked XF86AudioPrev exec playerctl previous
 
   # Backlight
   XF86MonBrightnessDown exec light -U 10
@@ -252,7 +243,10 @@ for_window {
     move position 50ppt 0px, \
     border csd
 
+  # Don't need title bars on browsers.
+  [app_id="chromium"] border pixel 2
+  [app_id="firefox"]  border pixel 2
+
   [class="Steam"]     border none
   [class="obsidian"]  border pixel 1
-  [class="1Password"] floating enable
 }

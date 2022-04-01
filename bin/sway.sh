@@ -18,9 +18,6 @@ export QT_STYLE_OVERRIDE=adwaita-dark
 # https://github.com/swaywm/wlroots/blob/master/docs/env_vars.md#drm-backend
 export WLR_DRM_NO_MODIFIERS=1
 
-#systemd-cat --identifier=sway sway --debug $@
-
-systemctl --user import-environment
 systemd-cat --identifier=sway sway $@
 
 systemctl --user stop sway-session.target

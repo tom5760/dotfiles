@@ -1,0 +1,5 @@
+timeout 300 'loginctl lock-session'
+timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"'
+idlehint 600
+before-sleep 'swaylock --daemonize --ignore-empty-password'
+lock 'swaylock --daemonize --ignore-empty-password'
