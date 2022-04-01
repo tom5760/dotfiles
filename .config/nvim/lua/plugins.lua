@@ -51,6 +51,9 @@ local function setup()
   -- indent guide
   use 'lukas-reineke/indent-blankline.nvim'
 
+  -- toggle comments
+  use 'terrortylor/nvim-comment'
+
   if packer_bootstrap then
     require('packer').sync()
   end

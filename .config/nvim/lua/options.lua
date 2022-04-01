@@ -2,6 +2,8 @@ vim.o.mouse    = 'a'
 vim.o.wrap     = false
 vim.o.undofile = true
 vim.o.autoread = false
+vim.o.title    = true
+vim.o.clipboard = 'unnamedplus'
 
 vim.o.ignorecase = true
 vim.o.smartcase  = true
@@ -31,10 +33,11 @@ vim.o.listchars   = 'tab:⤑ ,trail:·,extends:⇉,precedes:⇇,nbsp:␣'
 
 vim.o.termguicolors  = true
 vim.o.background     = 'dark'
-vim.g.gruvbox_italic = '1'
+vim.g.gruvbox_bold   = false
+vim.g.gruvbox_italic = true
 vim.cmd 'colorscheme gruvbox'
 
-vim.o.completeopt = 'menuone,longest,noinsert,noselect,preview'
+vim.o.completeopt = 'menu,longest,noinsert'
 
 -- Disable built-in SQL mappings
 vim.g.omni_sql_no_default_maps = 1
