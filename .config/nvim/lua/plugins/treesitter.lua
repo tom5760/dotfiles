@@ -1,6 +1,8 @@
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
+    "c",
     "go",
+    "make",
   },
 
   highlight = {
@@ -8,7 +10,7 @@ require('nvim-treesitter.configs').setup {
   },
 
   indent = {
-    enable = false,
+    enable = true,
   },
 
   textobjects = {

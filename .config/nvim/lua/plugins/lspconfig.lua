@@ -1,4 +1,5 @@
-local lspconfig = require('lspconfig')
+local lspconfig  = require('lspconfig')
+local ts_builtin = require('telescope.builtin')
 
 -- Use an on_attach function to only map the following keys
 -- after the language server attaches to the current buffer
@@ -9,31 +10,24 @@ local function on_attach(client, bufnr)
   vim.bo.omnifunc = 'v:lua.vim.lsp.omnifunc'
 
   -- Mappings
-  local opts = { noremap = true, silent = true }
+  local opts = { buffer = true }
 
   -- See `:help vim.lsp.*` for documentation on any of the below functions
-  buf_set_keymap('n', 'gD', '<Cmd>lua vim.lsp.buf.type_definition()<CR>', opts)
-  buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
-  buf_set_keymap('n', 'K', '<Cmd>lua vim.lsp.buf.hover()<CR>', opts)
-  buf_set_keymap('n', 'gi', '<Cmd>lua vim.lsp.buf.implementation()<CR>', opts)
-  buf_set_keymap('n', '<C-k>', '<Cmd>lua vim.lsp.buf.signature_help()<CR>', opts)
-  buf_set_keymap('n', '<Leader>rn', '<Cmd>lua vim.lsp.buf.rename()<CR>', opts)
-  buf_set_keymap('n', '<Leader>ca', '<Cmd>lua vim.lsp.buf.code_action()<CR>', opts)
-  buf_set_keymap('n', '<Leader>e', '<Cmd>lua vim.diagnostic.open_float()<CR>', opts)
-  buf_set_keymap('n', '[d', '<Cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
-  buf_set_keymap('n', ']d', '<Cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-  buf_set_keymap('n', '<Leader>f', '<Cmd>lua vim.lsp.buf.formatting()<CR>', opts)
+  vim.keymap.set('n', 'gD',         vim.lsp.buf.type_definition, opts)
+  vim.keymap.set('n', 'gd',         vim.lsp.buf.definition, opts)
+  vim.keymap.set('n', 'K',          vim.lsp.buf.hover, opts)
+  vim.keymap.set('n', 'gi',         vim.lsp.buf.implementation, opts)
+  vim.keymap.set('n', '<C-k>',      vim.lsp.buf.signature_help, opts)
+  vim.keymap.set('n', '<Leader>rn', vim.lsp.buf.rename, opts)
+  vim.keymap.set('n', '<Leader>ca', vim.lsp.buf.code_action, opts)
+  vim.keymap.set('n', '<Leader>e',  vim.diagnostic.open_float, opts)
+  vim.keymap.set('n', '[d',         vim.diagnostic.goto_prev, opts)
+  vim.keymap.set('n', ']d',         vim.diagnostic.goto_next, opts)
+  vim.keymap.set('n', '<Leader>f',  vim.lsp.buf.format, opts)
 
-  buf_set_keymap('n', 'gr', [[<Cmd>lua require('telescope.builtin').lsp_references()<CR>]], opts)
-  buf_set_keymap('n', '<Leader>q', [[<Cmd>lua require('telescope.builtin').lsp_workspace_diagnostics()<CR>]], opts)
-
-  local cmd = string.format([[<Cmd>lua require('telescope.builtin').lsp_dynamic_workspace_symbols({hack = true, root_dir = '%s'})<CR>]], client.config.root_dir)
-  buf_set_keymap('n', '<Leader>p', cmd, opts)
-
-  vim.cmd [[
-    command! Format execute 'lua vim.lsp.buf.formatting()'
-    autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()
-  ]]
+  vim.keymap.set('n', 'gr',        ts_builtin.lsp_references, opts)
+  vim.keymap.set('n', '<Leader>q', ts_builtin.diagnostics, opts)
+  vim.keymap.set('n', '<Leader>p', ts_builtin.lsp_dynamic_workspace_symbols, opts)
 end
 
 local function on_new_config(new_config, new_root_dir)
@@ -55,3 +49,6 @@ lspconfig.gopls.setup {
   on_new_config = on_new_config,
 }
 
+lspconfig.clangd.setup {
+  on_attach = on_attach,
+}
