@@ -15,6 +15,7 @@
 	pruneTags = true
 [push]
 	followTags = true
+	autoSetupRemote = true
 [alias]
 	pushnew = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
 	lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(yellow)%an%d%Creset %s' --date=relative
@@ -37,11 +38,20 @@
 	autoCorrect = prompt
 [diff]
 	algorithm = histogram
-[includeIf "gitdir:machineq/"]
-  path = ~/.config/git/mq.config
 [gpg]
 	format = ssh
 [tag]
 	gpgsign = true
 [gpg "ssh"]
+  program = "/opt/1Password/op-ssh-sign"
 	allowedSignersFile = /home/tom/.config/git/allowed_signers
+[includeIf "gitdir:machineq/"]
+  path = ~/.config/git/mq.config
+[url "github.com:machineq/"]
+  insteadOf = https://github.com/machineq/
+[url "github-comcast:comcast-machineq/"]
+  insteadOf = https://github.com/comcast-machineq/
+[url "github-comcast:comcast-machineq/"]
+  insteadOf = git@github.com:comcast-machineq/
+[url "github-comcast:twambo703_comcast/"]
+  insteadOf = git@github.com:twambo703_comcast/
