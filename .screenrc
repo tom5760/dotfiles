@@ -30,3 +30,5 @@ bindkey "^[0" select 9
 
 # Fixes odd problem with hitting another key after escape too quickly in vim
 maptimeout 2
+
+term screen-256color
