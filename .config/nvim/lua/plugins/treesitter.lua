@@ -1,6 +1,8 @@
 require('nvim-treesitter.configs').setup {
   ensure_installed = {
     "c",
+    "devicetree",
+    "fish",
     "go",
     "make",
   },
@@ -10,7 +12,7 @@ require('nvim-treesitter.configs').setup {
   },
 
   indent = {
-    enable = true,
+    enable = false,
   },
 
   textobjects = {

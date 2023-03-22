@@ -9,10 +9,10 @@ vim.o.ignorecase = true
 vim.o.smartcase  = true
 vim.o.inccommand = 'nosplit'
 
-vim.o.expandtab     = true
-vim.o.tabstop       = 2
-vim.o.shiftwidth    = 2
-vim.o.softtabstop   = 2
+vim.o.expandtab     = false
+vim.o.tabstop       = 8
+vim.o.shiftwidth    = 8
+vim.o.softtabstop   = 8
 vim.o.textwidth     = 79
 vim.o.formatoptions = 'jcrqlo'
 

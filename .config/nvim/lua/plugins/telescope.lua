@@ -10,6 +10,9 @@ telescope.setup {
     find_files = {
       hidden = true,
     },
+    git_files = {
+      show_untracked = true,
+    },
     lsp_dynamic_workspace_symbols = {
       preview = true,
     },
@@ -21,4 +24,14 @@ telescope.setup {
 
 telescope.load_extension('zf-native')
 
-vim.keymap.set('n', '<C-p>', builtin.find_files)
+local function project_files()
+  local opts = {}
+  vim.fn.system('git rev-parse --is-inside-work-tree')
+  if vim.v.shell_error == 0 then
+    builtin.git_files(opts)
+  else
+    builtin.find_files(opts)
+  end
+end
+
+vim.keymap.set('n', '<C-p>', project_files)
