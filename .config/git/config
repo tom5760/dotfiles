@@ -43,7 +43,7 @@
 [tag]
 	gpgsign = true
 [gpg "ssh"]
-  program = "/opt/1Password/op-ssh-sign"
+	program = "/opt/1Password/op-ssh-sign"
 	allowedSignersFile = /home/tom/.config/git/allowed_signers
 [includeIf "gitdir:machineq/"]
   path = ~/.config/git/mq.config
