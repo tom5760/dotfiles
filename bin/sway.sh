@@ -9,7 +9,7 @@ export MOZ_ENABLE_WAYLAND=1
 export NO_AT_BRIDGE=1
 export QT_QPA_PLATFORM=wayland-egl
 export SDL_VIDEODRIVER=wayland
-#export XDG_CURRENT_DESKTOP=sway
+export XDG_CURRENT_DESKTOP=sway
 export XDG_SESSION_DESKTOP=sway
 export XDG_SESSION_TYPE=wayland
 
