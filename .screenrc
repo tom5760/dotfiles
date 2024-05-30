@@ -32,3 +32,8 @@ bindkey "^[0" select 9
 maptimeout 2
 
 term screen-256color
+
+# Enable automatic zmodem support
+zmodem catch
+zmodem sendcmd "!!! /usr/bin/lrzsz/lsz -vv -b "
+zmodem recvcmd "!!! /usr/bin/lrzsz/lrz -vv -b --rename"
