@@ -49,5 +49,5 @@ pacman -Scc
 echo
 
 echo "updatedb"
-updatedb
+systemctl start --wait plocate-updatedb.service
 echo
