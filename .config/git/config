@@ -1,57 +1,69 @@
-[user]
-	name = Tom Wambold
-	email = tom5760@gmail.com
-	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICcHtK5cvZL1pDR+0IxYzPebauNQneYx9uzTdbWGsRP1
-[core]
-	editor = nvim
-	pager = /usr/share/git/diff-highlight/diff-highlight | less -x2
-[merge]
-	tool = meld
-	conflictstyle = zdiff3
-[stash]
-	showPatch = true
-[fetch]
-	prune = true
-	pruneTags = true
-[push]
-	followTags = true
-	autoSetupRemote = true
+[advice]
+	skippedCherryPicks = false
 [alias]
 	pushnew = "!git push -u origin \"$(git rev-parse --abbrev-ref HEAD)\""
 	lg = log --graph --pretty=format:'%Cred%h%Creset %Cgreen(%cr)%Creset %C(yellow)%an%d%Creset %s' --date=relative
 	mdiff = difftool --dir-diff -t meld
 	please = push --force-with-lease
 	recent = branch --sort=-committerdate --format=\"%(committerdate:relative)%09%(refname:short)\"
+[branch]
+	sort = -committerdate
 [commit]
 	verbose = true
 	gpgsign = true
-[rebase]
-	autosquash = true
-[log]
-	date = human
-	follow = true
-[pull]
-	ff = only
-[init]
-	defaultBranch = main
-[help]
-	autoCorrect = prompt
+[core]
+	editor = nvim
 [diff]
 	algorithm = histogram
+	colorMoved = default
+[fetch]
+	prune = true
+	pruneTags = true
 [gpg]
 	format = ssh
-[tag]
-	gpgsign = true
 [gpg "ssh"]
 	program = "/opt/1Password/op-ssh-sign"
 	allowedSignersFile = /home/tom/.config/git/allowed_signers
+[help]
+	autoCorrect = prompt
+[init]
+	defaultBranch = main
+[log]
+	date = human
+	follow = true
+[merge]
+	tool = meld
+	conflictstyle = zdiff3
+[mergetool]
+	keepBackup = false
+[pull]
+	ff = only
+	rebase = true
+[push]
+	followTags = true
+	autoSetupRemote = true
+[rebase]
+	autosquash = true
+	updateRefs = true
+[rerere]
+	enabled = true
+[stash]
+	showPatch = true
+[tag]
+	gpgsign = true
+[user]
+	name = Tom Wambold
+	email = tom5760@gmail.com
+	signingkey = key::ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAICcHtK5cvZL1pDR+0IxYzPebauNQneYx9uzTdbWGsRP1
+
 [includeIf "gitdir:machineq/"]
-  path = ~/.config/git/mq.config
+	path = mq.gitconfig
+
 [url "github.com:machineq/"]
-  insteadOf = https://github.com/machineq/
+	insteadOf = https://github.com/machineq/
 [url "github-comcast:comcast-machineq/"]
-  insteadOf = https://github.com/comcast-machineq/
+	insteadOf = https://github.com/comcast-machineq/
 [url "github-comcast:comcast-machineq/"]
-  insteadOf = git@github.com:comcast-machineq/
+	insteadOf = git@github.com:comcast-machineq/
 [url "github-comcast:twambo703_comcast/"]
-  insteadOf = git@github.com:twambo703_comcast/
+	insteadOf = git@github.com:twambo703_comcast/
