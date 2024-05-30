@@ -1,2 +1,5 @@
 layer=overlay
 default-timeout=30000
+
+[mode=dnd]
+invisible=1
