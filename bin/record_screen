@@ -3,9 +3,9 @@
 #     pacman -S slop
 # Run this like: ./record_screen moviename
 
-if ! which slop 2>&1 > /dev/null
+if ! which slurp 2>&1 > /dev/null
 then
-  echo "slop not installed"
+  echo "slurp not installed"
   exit 1
 fi
 
@@ -15,30 +15,34 @@ then
   exit 1
 fi
 
-eval $(slop --nodecorations --format="W=%w; H=%h; X=%x; Y=%y;")
+wf-recorder \
+    --geometry "$(slurp)" \
+    --file "$1"
 
-if [ -z "$W" -o -z "$H" -o -z "$X" -o -z "Y" ]
-then
-  exit 0
-fi
-
-echo $W $H $X $Y
+#eval $(slop --nodecorations --format="W=%w; H=%h; X=%x; Y=%y;")
+#
+#if [ -z "$W" -o -z "$H" -o -z "$X" -o -z "Y" ]
+#then
+#  exit 0
+#fi
+#
+#echo $W $H $X $Y
 
 # Record just the screen
-exec ffmpeg \
-  -f x11grab \
-  -show_region 1 \
-  -framerate 60 \
-  -video_size "${W}x${H}" \
-  -draw_mouse 1 \
-  -i ":0.0+$X,$Y" \
-  -filter:v "crop=iw-mod(iw\,2):ih-mod(ih\,2)" \
-  -codec:v libx264 \
-  -preset:v fast \
-  -profile:v baseline \
-  -pix_fmt yuv420p \
-  -r 60 \
-  $1
+#exec ffmpeg \
+#  -f x11grab \
+#  -show_region 1 \
+#  -framerate 60 \
+#  -video_size "${W}x${H}" \
+#  -draw_mouse 1 \
+#  -i ":0.0+$X,$Y" \
+#  -filter:v "crop=iw-mod(iw\,2):ih-mod(ih\,2)" \
+#  -codec:v libx264 \
+#  -preset:v fast \
+#  -profile:v baseline \
+#  -pix_fmt yuv420p \
+#  -r 60 \
+#  $1
 
 # Record the screen and audio output
 #cmd="ffmpeg \
