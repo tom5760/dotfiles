@@ -20,16 +20,9 @@ if status --is-interactive
   set --export --global PAGER less
   set --export --global EDITOR nvim
   set --export --global BROWSER firefox
-  set --export --global MANPAGER "/bin/sh -c \" \
-    unset PAGER; \
-    unset MANPAGER; \
-    col --no-backspace --spaces | \
-    nvim -R \
-      -c 'set ft=man nomod nolist' \
-      -c 'map q :q<CR>' \
-      -c 'map <SPACE> <C-D>' \
-      -c 'nmap K :Man <C-R>=expand(\\\"<cword>\\\")<CR><CR>' \
-      -\""
+
+  set --export --global MANWIDTH 999
+  set --export --global MANPAGER "nvim -c 'Man!' -o -"
 
   set --export --global XDG_DATA_DIRS "$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 

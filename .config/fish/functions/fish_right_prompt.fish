@@ -2,37 +2,21 @@ function fish_right_prompt -d 'Write out the right side prompt'
   # Save our status
   set --local last_status $status
 
-  # Print out the exit status of the last command if it failed.
+  # Prompt status only if it's not 0
+  set --local prompt_status
   if test $last_status -ne 0
-    printf "%s[%d]%s " (set_color red --bold) $last_status (set_color normal)
+    set prompt_status (set_color red)"[$last_status]"(set_color normal)
   end
 
   # Print out the number of background jobs we have running.
-  set -l jobs_count (jobs -p | wc -l)
+  set --local jobs_count (jobs -p | wc -l)
+  set --local prompt_jobs
   if test $jobs_count -ne 0
-    printf "%s{%d}%s " (set_color yellow) $jobs_count (set_color normal)
+    set prompt_jobs (set_color yellow)"[$jobs_count]"(set_color normal)
   end
 
-  # Print out our current git status if we are in a repository.
-  set --local in_worktree (git rev-parse --is-inside-work-tree 2> /dev/null)
+  set --local vcs (set_color --dim green)(fish_vcs_prompt '(%s)' 2>/dev/null)(set_color normal)
+  set --local ts (set_color brgrey)(date "+%-I:%M:%S")(set_color normal)
 
-  if test "$in_worktree" = "true"
-    echo (set_color --dim green)'('
-
-    if not git symbolic-ref --short HEAD 2> /dev/null
-      # If detached, print the short ref name.
-      git rev-parse --short HEAD
-    end
-
-    set --local git_status (git status --porcelain)
-    if test -n "$git_status"
-      echo '*'
-    end
-
-    echo ')' (set_color normal)
-  end
-
-  # Print out a timestamp
-  echo "<"
-  date "+%-I:%M:%S"
+  string join " " -- $prompt_jobs $prompt_status $vcs $ts
 end
