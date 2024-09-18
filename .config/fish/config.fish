@@ -9,8 +9,7 @@ if status --is-login
   fish_add_path --prepend ~/documents/dotfiles/bin
   fish_add_path --prepend ~/bin
 
-  fish_add_path --append ~/programs/go/root/bin
-  fish_add_path --append ~/programs/go/path/bin
+  fish_add_path --append ~/programs/go/bin
   fish_add_path --append ~/programs/npm/bin
   fish_add_path --append ~/programs/google-cloud-sdk/bin
 end
@@ -27,9 +26,6 @@ if status --is-interactive
   set --export --global XDG_DATA_DIRS "$HOME/.local/share/flatpak/exports/share:$XDG_DATA_DIRS"
 
   set --export --global DEBUGINFOD_URLS "https://debuginfod.archlinux.org/"
-
-  export_dir GOROOT ~/programs/go/root
-  export_dir GOPATH ~/programs/go/path
 
   if [ -S ~/.1password/agent.sock ]
     set --export --universal SSH_AUTH_SOCK ~/.1password/agent.sock
