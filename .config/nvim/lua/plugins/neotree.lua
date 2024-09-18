@@ -26,7 +26,5 @@ return {
 			mode = '',
 			desc = 'Reveal current file in neotree.',
 		},
-
-		-- go to current file
 	},
 }
